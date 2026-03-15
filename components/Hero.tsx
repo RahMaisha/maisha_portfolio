@@ -93,7 +93,7 @@ export default function Hero() {
               <span className="photo-corner-tl" />
               <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(0,212,255,0.12)', background: '#0d1117', display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                 <div style={{ fontSize: 64, opacity: 0.1 }}>👩‍💻</div>
-                <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#4a5568', letterSpacing: '0.1em' }}>your photo here</div>
+                <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#4a5568', letterSpacing: '0.1em' }}>profile.jpeg</div>
               </div>
               <span className="photo-corner-br" />
               <div style={{ position: 'absolute', bottom: 24, left: -20, background: '#0d1117', border: '1px solid rgba(0,212,255,0.2)', borderRadius: 12, padding: '12px 16px', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
