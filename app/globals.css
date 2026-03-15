@@ -12,39 +12,39 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::before {
-  content: '';
+.grid-bg {
   position: fixed;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-image:
-    linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: 0;
+    linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
 }
 
-.glow1 {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
-  top: -200px;
-  right: -150px;
-  pointer-events: none;
-  z-index: 0;
+.orb1 {
+  position: fixed; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 65%);
+  top: -200px; right: -150px; pointer-events: none; z-index: 0;
+  animation: orbFloat1 8s ease-in-out infinite;
 }
 
-.glow2 {
-  position: fixed;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,255,0.04) 0%, transparent 70%);
-  bottom: 0;
-  left: -100px;
-  pointer-events: none;
-  z-index: 0;
+.orb2 {
+  position: fixed; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,99,255,0.06) 0%, transparent 65%);
+  bottom: -100px; left: -150px; pointer-events: none; z-index: 0;
+  animation: orbFloat2 10s ease-in-out infinite;
 }
 
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 40px); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -30px); }
+}

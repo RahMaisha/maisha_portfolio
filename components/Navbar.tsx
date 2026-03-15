@@ -25,7 +25,7 @@ export default function Navbar() {
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <span style={{ fontFamily: 'Space Mono', fontSize: 14, color: '#f1f0f7' }}>
-          mr<span style={{ color: '#a78bfa' }}>.</span>dev
+          maisha_rahman<span style={{ color: '#a78bfa' }}>.</span>dev
         </span>
         <div style={{ display: 'flex', gap: 4 }}>
           {['about','skills','projects','research','contact'].map(id => (
@@ -43,7 +43,7 @@ export default function Navbar() {
           fontFamily: 'Space Mono', fontSize: 11, fontWeight: 700,
           background: '#a78bfa', color: '#05050a',
           padding: '8px 18px', borderRadius: 6, textDecoration: 'none',
-        }}>resume →</a>
+        }}>Resume →</a>
       </div>
     </nav>
   )

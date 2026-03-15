@@ -10,6 +10,8 @@ import Contact from '@/components/Contact'
 export default function Home() {
   return (
     <main>
+      <canvas id="bg-canvas" style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
+      <div className="grid-bg" />
       <div className="orb1" />
       <div className="orb2" />
       <Navbar />
