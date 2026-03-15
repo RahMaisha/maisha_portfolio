@@ -25,10 +25,10 @@ export default function Experience() {
           <div className="xp-card">
             <div>
               <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#f5a623', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.18)', borderRadius: 20, padding: '4px 12px', display: 'inline-block', marginBottom: 14 }}>
-                2024 – 2025 · 3 mos
+                Jan,2025 – Now · 3 mos
               </div>
               <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 4 }}>
-                Your<br />Company
+                Inkphase.com
               </div>
               <div style={{ fontSize: 12, color: '#8892a4', fontFamily: 'Fira Code, monospace', marginBottom: 16 }}>Dhaka, Bangladesh</div>
               <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 6 }}>

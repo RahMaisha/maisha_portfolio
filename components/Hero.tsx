@@ -148,7 +148,7 @@ export default function Hero() {
               </div>
 
               <p className="h-a4" style={{ fontSize: 16, color: '#8892a4', maxWidth: 520, lineHeight: 1.8, marginBottom: 36, fontWeight: 300 }}>
-                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>AI systems that ship</strong> — from published Vision Transformer research to production SaaS products. CS graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
+                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>reliable systems that ship</strong> — from published Vision Transformer research to production grdade products. CS graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
               </p>
 
               <div className="h-a5" style={{ display: 'flex', gap: 12, marginBottom: 40, flexWrap: 'wrap' as const }}>
