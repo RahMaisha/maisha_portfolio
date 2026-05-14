@@ -35,10 +35,20 @@ export default function About() {
         .hl-t { font-size:13px;font-weight:600;color:#e8eaf0;margin-bottom:3px; }
         .hl-s { font-size:12px;color:#8892a4;line-height:1.5; }
         .edu-pill { display:inline-flex;align-items:center;gap:10px;background:#0d1117;border:1px solid rgba(0,212,255,.15);border-radius:100px;padding:10px 20px;margin-bottom:36px;flex-wrap:wrap; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+        .about-inner { padding: 0 48px; }
+        @media (max-width: 960px) {
+          .about-grid { grid-template-columns:1fr; gap:36px; }
+          .about-inner { padding: 0 32px !important; }
+        }
+        @media (max-width: 768px) {
+          .about-inner { padding: 0 20px !important; }
+          .edu-pill { border-radius:20px; padding:12px 16px; }
+        }
       `}</style>
 
       <section id="about" style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
+        <div className="about-inner" style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
           <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>01. about</div>
           <h2 style={{ fontSize: 'clamp(28px,3vw,36px)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 32 }}>
             Who I <span style={{ color: '#00d4ff' }}>Am</span>
@@ -53,7 +63,7 @@ export default function About() {
             <span style={{ fontSize: 13, color: '#00d4ff', fontFamily: 'Fira Code, monospace' }}>Top Scholar ✦</span>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56 }}>
+          <div className="about-grid">
             <div>
               <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20 }}>My Journey</h3>
               <p style={{ fontSize: 15, color: '#8892a4', lineHeight: 1.85, marginBottom: 16, fontWeight: 300 }}>

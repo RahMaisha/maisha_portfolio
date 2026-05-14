@@ -56,16 +56,30 @@ export default function Skills() {
         .sk-desc { font-size:12px;color:#4a5568;margin-left:4px; }
         .sk-exp { font-family:'Fira Code',monospace;font-size:11px;display:flex;align-items:center;gap:4px;color:#8892a4; }
         .sk-exp-pill { padding:2px 10px;border-radius:20px;font-size:10px;font-family:'Fira Code',monospace;font-weight:500; }
+        .skills-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px; }
+        .skills-inner { padding: 0 48px; }
+        @media (max-width: 1100px) {
+          .skills-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+          .skills-inner { padding: 0 32px !important; }
+        }
+        @media (max-width: 768px) {
+          .skills-grid { grid-template-columns:1fr; }
+          .skills-inner { padding: 0 20px !important; }
+          .sk-group { padding:20px; }
+          .sk-row-item { align-items:flex-start; gap:10px; }
+          .sk-left { flex-wrap:wrap; }
+          .sk-exp-pill { margin-left:auto; }
+        }
       `}</style>
 
       <section id="skills" style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
+        <div className="skills-inner" style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
           <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>02. skills</div>
           <h2 style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 40 }}>
             Technical <span style={{ color: '#00d4ff' }}>Expertise</span>
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+          <div className="skills-grid">
             {groups.map((g) => (
               <div key={g.title} className="sk-group">
                 <div className="sk-group-head">

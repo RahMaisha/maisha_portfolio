@@ -3,6 +3,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
 
 body {
   background: #07090f;
@@ -47,4 +48,29 @@ body {
 @keyframes orbFloat2 {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(40px, -30px); }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .grid-bg {
+    background-size: 44px 44px;
+  }
+
+  .orb1 {
+    width: 420px;
+    height: 420px;
+    top: -140px;
+    right: -180px;
+  }
+
+  .orb2 {
+    width: 320px;
+    height: 320px;
+    bottom: -80px;
+    left: -120px;
+  }
 }
