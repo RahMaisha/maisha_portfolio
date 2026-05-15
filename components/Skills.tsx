@@ -141,7 +141,7 @@ export default function Skills() {
                       <span className="sk-name">{s.name}</span>
                       <span className="sk-desc">{s.desc}</span>
                     </div>
-                    <span className="sk-exp-pill" style={{ background: `${g.color}12`, color: g.color, border: `1px solid ${g.color}30` }}>{s.exp}</span>
+                    <span className="sk-exp-pill" style={{ background: `${g.color}12`, color: g.color, border: `1px solid ${g.color}30` }}>{getExperience(s.startDate)}</span>
                   </div>
                 ))}
               </div>
