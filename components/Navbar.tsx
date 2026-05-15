@@ -1,7 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -12,15 +15,22 @@ export default function Navbar() {
   }, [])
 
   const scrollTo = (id: string) => {
+    if (pathname !== '/') {
+      setMenuOpen(false)
+      router.push(`/#${id}`)
+      return
+    }
+
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMenuOpen(false)
   }
 
-  const navLinks = ['about', 'skills', 'experience', 'projects', 'research', 'contact']
+  const navLinks = ['about', 'skills', 'experience', 'projects', 'hackathon', 'volunteering', 'research', 'contact']
 
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
         .nav-links-desktop { display: flex; gap: 4px; }
         .nav-resume-desktop { display: block; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
@@ -33,7 +43,7 @@ export default function Navbar() {
           right: 0;
           background: rgba(5,5,10,0.97);
           backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(167,139,250,0.1);
+          border-bottom: 1px solid rgba(0,212,255,0.08);
           padding: 16px 0;
           z-index: 99;
           flex-direction: column;
@@ -52,14 +62,14 @@ export default function Navbar() {
           transition: all 0.2s;
           text-transform: capitalize;
         }
-        .mobile-link:hover { color: #f1f0f7; background: rgba(167,139,250,0.08); }
+        .mobile-link:hover { color: #f1f0f7; background: rgba(0,212,255,0.06); }
         .mobile-resume {
           margin: 8px 28px 4px;
           font-family: 'Space Mono', monospace;
           font-size: 11px;
           font-weight: 700;
-          background: #a78bfa;
-          color: #05050a;
+          background: #00d4ff;
+          color: #07090f;
           padding: 10px 18px;
           border-radius: 6px;
           text-decoration: none;
@@ -81,39 +91,69 @@ export default function Navbar() {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '12px 0',
-        background: scrolled ? 'rgba(5,5,10,0.9)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(167,139,250,0.06)' : 'none',
+        background: 'transparent',
+        backdropFilter: 'none',
+        borderBottom: 'none',
         transition: 'all 0.3s',
       }}>
         <div style={{
           maxWidth: 1000, margin: '0 auto', padding: '0 20px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}>
-          <span style={{ fontFamily: 'Space Mono', fontSize: 13, color: '#f1f0f7' }}>
-            maisha_rahman<span style={{ color: '#a78bfa' }}>.</span>dev
-          </span>
+          <button
+            onClick={() => scrollTo('hero')}
+            style={{
+              fontFamily: 'Space Mono, monospace',
+              fontSize: 13,
+              color: '#f1f0f7',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
+            }}
+          >
+            maisha_rahman<span style={{ color: '#00d4ff' }}>.</span>dev
+          </button>
 
           {/* Desktop nav */}
           <div className="nav-links-desktop">
             {navLinks.map(id => (
-              <button key={id} onClick={() => scrollTo(id)} style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                fontFamily: 'Space Mono', fontSize: 11, color: '#6b6a88',
-                padding: '6px 12px', borderRadius: 100, transition: 'all 0.2s',
-                textTransform: 'capitalize',
-              }}
-              onMouseEnter={e => { (e.target as HTMLElement).style.color = '#f1f0f7'; (e.target as HTMLElement).style.background = 'rgba(167,139,250,0.1)' }}
-              onMouseLeave={e => { (e.target as HTMLElement).style.color = '#6b6a88'; (e.target as HTMLElement).style.background = 'transparent' }}
-              >{id}</button>
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                style={{
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  fontFamily: 'Space Mono, monospace', fontSize: 13, color: '#6b6a88',
+                  padding: '6px 14px', borderRadius: 100, transition: 'all 0.2s',
+                  textTransform: 'capitalize',
+                }}
+                onMouseEnter={e => {
+                  (e.target as HTMLElement).style.color = '#f1f0f7'
+                  ;(e.target as HTMLElement).style.background = 'rgba(0,212,255,0.08)'
+                }}
+                onMouseLeave={e => {
+                  (e.target as HTMLElement).style.color = '#6b6a88'
+                  ;(e.target as HTMLElement).style.background = 'transparent'
+                }}
+              >
+                {id}
+              </button>
             ))}
           </div>
 
-          <a className="nav-resume-desktop" href="/resume.pdf" target="_blank" style={{
-            fontFamily: 'Space Mono', fontSize: 11, fontWeight: 700,
-            background: '#a78bfa', color: '#05050a',
-            padding: '8px 18px', borderRadius: 6, textDecoration: 'none',
-          }}>Resume</a>
+          <a
+            className="nav-resume-desktop"
+            href="/resume.pdf"
+            target="_blank"
+            style={{
+              fontFamily: 'Space Mono, monospace', fontSize: 11, fontWeight: 700,
+              background: '#00d4ff', color: '#07090f',
+              padding: '8px 18px', borderRadius: 6, textDecoration: 'none',
+              transition: 'all 0.2s',
+            }}
+          >
+            Resume
+          </a>
 
           {/* Hamburger */}
           <button className="hamburger" onClick={() => setMenuOpen(p => !p)} aria-label="Toggle menu">

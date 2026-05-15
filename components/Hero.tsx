@@ -4,12 +4,31 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const roles = [
-  'AI Engineer',
   'Software Engineer',
-  'Fullstack Developer',
-  'ML Researcher',
-  'Computer Vision Engineer',
+  'Full-Stack Developer',
+  'AI Engineer',
+  'Backend Engineer',
+  'Computer Vision Researcher',
 ]
+
+const GithubIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+  </svg>
+)
+
+const LinkedinIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+)
+
+const MailIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
+  </svg>
+)
 
 export default function Hero() {
   const [typed, setTyped] = useState('')
@@ -66,6 +85,10 @@ export default function Hero() {
     }
 
     const draw = () => {
+      if (document.hidden) {
+        animId = requestAnimationFrame(draw)
+        return
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       pts.forEach((point) => {
         ctx.beginPath()
@@ -109,12 +132,17 @@ export default function Hero() {
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
+  const socialLinks = [
+    { href: 'https://github.com/RahMaisha', label: 'GitHub', icon: <GithubIcon /> },
+    { href: 'https://linkedin.com/in/maisha-rahman-01x', label: 'LinkedIn', icon: <LinkedinIcon /> },
+    { href: 'mailto:maisharahman01x@gmail.com', label: 'Email', icon: <MailIcon /> },
+  ]
+
   return (
     <>
       <style>{`
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideRight { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes glowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,.4)} 50%{box-shadow:0 0 0 8px rgba(0,212,255,0)} }
         @keyframes blink { 50% { opacity: 0; } }
         .cursor { animation: blink 1s step-end infinite; color: #00d4ff; }
@@ -123,8 +151,8 @@ export default function Hero() {
         .hbtn-p:hover { background:#33ddff;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,212,255,.4); }
         .hbtn-s { display:inline-flex;align-items:center;gap:8px;background:transparent;color:#8892a4;font-size:14px;padding:13px 28px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:all .25s;font-family:'Inter',sans-serif; }
         .hbtn-s:hover { color:#e8eaf0;border-color:rgba(0,212,255,.4); }
-        .sl-a { font-family:'Fira Code',monospace;font-size:11px;color:#4a5568;text-decoration:none;letter-spacing:.06em;transition:color .2s; }
-        .sl-a:hover { color:#00d4ff; }
+        .sl-icon { color:#4a5568;text-decoration:none;transition:color .2s;display:flex;align-items:center; }
+        .sl-icon:hover { color:#00d4ff; }
         .h-a1 { animation: fadeUp .6s ease both; }
         .h-a2 { animation: fadeUp .6s .1s ease both; }
         .h-a3 { animation: fadeUp .6s .2s ease both; }
@@ -132,10 +160,9 @@ export default function Hero() {
         .h-a5 { animation: fadeUp .6s .4s ease both; }
         .h-a6 { animation: fadeUp .6s .5s ease both; }
         .photo-anim { animation: fadeIn .8s .3s ease both; }
-        .badge-anim { animation: slideRight .6s .5s ease both; opacity: 0; animation-fill-mode: both; }
         .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; align-items: center; }
         .hero-photo-col { position: relative; display:flex; justify-content:center; }
-        .hero-links { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+        .hero-links { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
         .avatar-shell {
           width: 320px;
           height: 320px;
@@ -171,7 +198,7 @@ export default function Hero() {
           .hero-section { padding: 88px 0 40px !important; }
           .hbtn-p, .hbtn-s { padding: 11px 20px; font-size: 13px; width: 100%; justify-content: center; }
           .hero-btns { flex-wrap: wrap; }
-          .hero-links { gap: 12px; }
+          .hero-links { gap: 16px; }
           .hero-copy { max-width: none !important; }
         }
         @media (max-width: 480px) {
@@ -203,7 +230,7 @@ export default function Hero() {
               </div>
 
               <p className="h-a4 hero-copy" style={{ fontSize: 16, color: '#8892a4', maxWidth: 520, lineHeight: 1.8, marginBottom: 36, fontWeight: 300 }}>
-                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>reliable systems that ship</strong> from published Vision Transformer research to production-grade products. CS graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
+                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>reliable systems that ship</strong> — from published Vision Transformer research to production-grade products. CS graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
               </p>
 
               <div className="h-a5 hero-btns" style={{ display: 'flex', gap: 12, marginBottom: 40, flexWrap: 'wrap' }}>
@@ -213,21 +240,26 @@ export default function Hero() {
 
               <div className="h-a6 hero-links">
                 <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.1)' }} />
-                <a className="sl-a" href="https://github.com/RahMaisha" target="_blank" rel="noreferrer">GitHub</a>
-                <a className="sl-a" href="https://linkedin.com/in/maisha-rahman-01x" target="_blank" rel="noreferrer">LinkedIn</a>
-                <a className="sl-a" href="mailto:maisharahman01x@gmail.com">Email</a>
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    className="sl-icon"
+                    href={s.href}
+                    target={s.href.startsWith('mailto') ? undefined : '_blank'}
+                    rel="noreferrer"
+                    aria-label={s.label}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
             </div>
 
             <div className="hero-photo-col">
               <div className="photo-anim avatar-shell">
                 <div className="avatar-frame">
-                  <Image src="/profile-me.jpeg" alt="Portrait of Maisha Rahman" width={640} height={640} priority />
+                  <Image src="/profile.jpeg" alt="Portrait of Maisha Rahman" width={640} height={640} priority />
                 </div>
-              </div>
-              <div className="badge-anim" style={{ position: 'absolute', bottom: 20, left: -6, background: 'rgba(7,9,15,0.95)', border: '1px solid rgba(0,212,255,0.25)', borderRadius: 12, padding: '12px 16px', backdropFilter: 'blur(10px)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#e8eaf0', marginBottom: 2 }}>ICCIT 2025</div>
-                <div style={{ fontSize: 10, color: '#00d4ff', fontFamily: 'Fira Code, monospace' }}>IEEE Published</div>
               </div>
             </div>
           </div>

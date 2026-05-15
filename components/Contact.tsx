@@ -4,7 +4,6 @@ import { FormEvent, useEffect, useState } from 'react'
 
 const contactInfo = [
   { icon: '@', label: 'Email', value: 'maisharahman01x@gmail.com', href: 'mailto:maisharahman01x@gmail.com' },
-  { icon: '+', label: 'Phone', value: '+880 1980 312 210', href: 'tel:+8801980312210' },
   { icon: 'O', label: 'Location', value: 'Dhaka, Bangladesh', href: '' },
 ]
 
@@ -43,43 +42,31 @@ export default function Contact() {
   }, [])
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setIsSubmitting(true)
-    setSubmitState({ type: 'idle', message: '' })
+  event.preventDefault()
+  setIsSubmitting(true)
 
-    const form = event.currentTarget
-    const formData = new FormData(form)
-    formData.append('_subject', 'New portfolio contact message')
-    formData.append('_captcha', 'false')
-    formData.append('_template', 'table')
+  const form = event.currentTarget
+  const data = new FormData(form)
+  data.append('access_key', 'f60bff5d-e782-453c-8280-069fde48f541') // paste your key
 
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/maisharahman01x@gmail.com', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: formData,
-      })
-
-      if (!response.ok) {
-        throw new Error('Form submission failed')
-      }
-
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data,
+    })
+    const json = await res.json()
+    if (json.success) {
       form.reset()
-      setSubmitState({
-        type: 'success',
-        message: 'Message sent. Check your inbox for the FormSubmit activation email if this is the first submission.',
-      })
-    } catch {
-      setSubmitState({
-        type: 'error',
-        message: 'Something went wrong while sending the message. Please email me directly at maisharahman01x@gmail.com.',
-      })
-    } finally {
-      setIsSubmitting(false)
+      setSubmitState({ type: 'success', message: 'Message sent! I\'ll get back to you soon.' })
+    } else {
+      throw new Error('Failed')
     }
+  } catch {
+    setSubmitState({ type: 'error', message: 'Something went wrong. Email me directly at maisharahman01x@gmail.com' })
+  } finally {
+    setIsSubmitting(false)
   }
+}
 
   return (
     <>
@@ -309,7 +296,7 @@ export default function Contact() {
       >
         <div style={{ maxWidth: 1120, margin: '0 auto' }}>
           <div className="ct-inner" style={{ padding: '0 48px 80px' }}>
-            <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>06. contact</div>
+            <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>08. contact</div>
             <h2 className="ct-title" style={{ fontSize: 'clamp(28px,3vw,36px)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 12 }}>
               Let&apos;s <span style={{ color: '#00d4ff' }}>Connect</span>
             </h2>
@@ -353,7 +340,7 @@ export default function Contact() {
               </div>
 
               <div className="ct-panel ct-reveal">
-                <h3 className="ct-form-title">Send Us a Message</h3>
+                <h3 className="ct-form-title">Send Direct Message</h3>
                 <form onSubmit={handleSubmit}>
                   <div className="ct-form-grid">
                     <div className="ct-field-wrap">

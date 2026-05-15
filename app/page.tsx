@@ -4,7 +4,9 @@ import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
+import Hackathon from '@/components/Hackathon'
 import Research from '@/components/Research'
+import Volunteering from '@/components/Volunteering'
 import Contact from '@/components/Contact'
 
 export default function Home() {
@@ -21,7 +23,9 @@ export default function Home() {
         <Skills />
         <Experience />
         <Projects />
+        <Hackathon />
         <Research />
+        <Volunteering />
         <Contact />
       </div>
     </main>

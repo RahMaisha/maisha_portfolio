@@ -2,20 +2,20 @@
 
 const bullets = [
   {
-    bold: 'Worked across 4 production applications',
-    rest: ' as sole or lead engineer, including 2 SaaS products, a CRM system, and an e-commerce platform, handling architecture, APIs, frontend, and deployment end-to-end',
+    bold: 'Contributed to multiple production-grade applications',
+    rest: ' across SaaS, CRM, and e-commerce platforms, working on frontend systems, backend APIs, database design, and deployment workflows.',
   },
   {
-    bold: 'Built and deployed an AI-powered chatbot',
-    rest: ' integrated across live client platforms, combining NLP pipelines with real user-facing interfaces using third-party LLM APIs',
+    bold: 'Developed a multi-tenant chatbot platform',
+    rest: ' integrating third-party LLM APIs with customer-facing web applications and internal management dashboards.',
   },
   {
-    bold: 'Designed a JSON-to-XML transformation service',
-    rest: ' for a client, handling deeply nested schema mapping, validation, and error handling using Django and PostgreSQL',
+    bold: 'Built a schema-driven JSON-to-XML transformation service',
+    rest: ' with nested mapping support, validation pipelines, and robust error handling using Django and PostgreSQL.',
   },
   {
-    bold: 'Currently engineering a news platform for 1M+ concurrent users',
-    rest: ' with horizontal scaling, load balancing, caching layers, and database architecture ahead of launch',
+    bold: 'Optimized backend infrastructure for scalability',
+    rest: ' using caching strategies, load balancing, and database tuning to improve reliability under concurrent traffic.',
   },
   {
     bold: 'Maintained security across all live projects',
@@ -35,8 +35,8 @@ const workProjects = [
     summary: 'Delivered major full-stack development across the live product, working closely with design, QA, and product direction.',
   },
   {
-    name: 'Chatbot Dashboard',
-    summary: 'Built a private dashboard experience to manage chatbot flows, support internal operations, and power live client integrations.',
+    name: 'Chatbot Saas',
+    summary: 'Built a chatbot widget can be injected to any websites and private dashboard experience to manage chatbot flows, support internal operations, and power live client integrations.',
   },
 ]
 

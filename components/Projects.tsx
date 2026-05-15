@@ -31,17 +31,17 @@ const professionalProjects = [
     imageAlt: 'Sporteroo landing page preview',
   },
   {
-    name: 'Chatbot Dashboard',
+    name: 'Multi-tenant chatbot platform',
     badge: 'Behind Login',
     href: '',
     role: 'Fullstack Contributor',
     stack: ['Laravel', 'Angular', 'MySQL', 'LLM APIs'],
     summary:
-      'Created an internal chatbot management dashboard for configuring flows, monitoring usage, and supporting client-facing chatbot experiences.',
+      'Developed a multi-tenant chatbot platform integrating third-party LLM APIs with customer-facing web applications and internal management dashboards.',
     impact:
-      'Best shown with screenshots because the dashboard is private and not accessible from the public site.',
+      'Best shown with screenshots because the platform is private and not accessible from the public site.',
     imagePath: '/project_images/chatbot_dashboard.png',
-    imageAlt: 'Chatbot dashboard preview',
+    imageAlt: 'Multi-tenant chatbot platform preview',
   },
 ]
 
@@ -49,6 +49,7 @@ const featuredProjects = [
   {
     name: 'HealthSync',
     badge: 'Live Build',
+    href:  'https://github.com/RahMaisha/Health-Sync-Capstone.git',
     desc: 'AI healthcare platform with real-time kidney stone detection. Microservices backend with Explainable AI heatmaps via Grad-CAM++.',
     impact: '98.6% diagnostic accuracy and 10k+ samples through self-supervised learning.',
     stack: ['Laravel', 'FastAPI', 'PyTorch', 'Docker', 'Grad-CAM++'],
@@ -284,6 +285,42 @@ export default function Projects() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+            <a
+              href="/projects"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '12px 24px',
+                borderRadius: 8,
+                border: '1px solid rgba(0,212,255,0.2)',
+                color: '#00d4ff',
+                textDecoration: 'none',
+                fontFamily: 'Fira Code, monospace',
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(0,212,255,0.5)'
+                el.style.background = 'rgba(0,212,255,0.08)'
+                el.style.transform = 'translateX(4px)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(0,212,255,0.2)'
+                el.style.background = 'transparent'
+                el.style.transform = 'translateX(0)'
+              }}
+            >
+              See All Projects
+              <span>→</span>
+            </a>
           </div>
         </div>
       </section>

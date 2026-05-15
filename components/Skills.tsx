@@ -1,42 +1,90 @@
 export default function Skills() {
+  // Helper function to calculate current experience
+  const getExperience = (startDate: Date) => {
+    const now = new Date()
+    const diffMs = now.getTime() - startDate.getTime()
+    const diffMonths = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 30.44))
+    
+    if (diffMonths < 12) {
+      return `${Math.max(1, diffMonths)}mo+`
+    }
+    const years = Math.floor(diffMonths / 12)
+    return `${years}y+`
+  }
+
   const groups = [
     {
-      icon: '🤖',
-      title: 'AI / ML Technologies',
+      icon: '💻',
+      title: 'Languages',
       color: '#00d4ff',
       skills: [
-        { name: 'PyTorch', desc: 'Deep learning, training', exp: '1y+' },
-        { name: 'Vision Transformers', desc: 'ViT, MAE architectures', exp: '1y+' },
-        { name: 'HuggingFace', desc: 'Models, fine-tuning', exp: '1y+' },
-        { name: 'Grad-CAM++', desc: 'Explainable AI, XAI', exp: '1y+' },
-        { name: 'Scikit-learn', desc: 'ML pipelines', exp: '1y+' },
-        { name: 'NLP / LLM', desc: 'OpenAI, text processing', exp: '1y+' },
+        { name: 'Python', desc: 'Scripting, automation, AI', startDate: new Date(2020, 4, 1) },
+        { name: 'TypeScript', desc: 'Typed frontend/backend', startDate: new Date(2024, 4, 1) },
+        { name: 'JavaScript', desc: 'Web application logic', startDate: new Date(2021, 4, 1) },
+        { name: 'Java', desc: 'Enterprise systems', startDate: new Date(2021, 4, 1) },
       ],
     },
     {
-      icon: '⚡',
-      title: 'Fullstack Engineering',
+      icon: '🎨',
+      title: 'Frontend',
       color: '#f5a623',
       skills: [
-        { name: 'Laravel', desc: 'PHP backend, SaaS', exp: '1y+' },
-        { name: 'Angular', desc: 'Enterprise frontend', exp: '1y+' },
-        { name: 'React / Next.js', desc: 'Modern web apps', exp: '1y+' },
-        { name: 'Node.js', desc: 'REST APIs, backend', exp: '1y+' },
-        { name: 'MySQL / MongoDB', desc: 'Databases, schemas', exp: '1y+' },
-        { name: 'FastAPI', desc: 'Python APIs', exp: '1y+' },
+        { name: 'React', desc: 'Component-based UI', startDate: new Date(2024, 4, 1) },
+        { name: 'Next.js', desc: 'SSR and static sites', startDate: new Date(2024, 4, 1) },
+        { name: 'Angular', desc: 'Enterprise SPAs', startDate: new Date(2024, 10, 1) },
+        { name: 'Flutter', desc: 'Cross-platform apps', startDate: new Date(2025, 1, 1) },
+        { name: 'Tailwind CSS', desc: 'Utility-first styling', startDate: new Date(2024, 4, 1) },
       ],
     },
     {
-      icon: '🛠',
-      title: 'DevOps & Tools',
+      icon: '⚙️',
+      title: 'Backend',
       color: '#22c55e',
       skills: [
-        { name: 'Docker', desc: 'Containerisation', exp: '1y+' },
-        { name: 'GitHub Actions', desc: 'CI/CD pipelines', exp: '1y+' },
-        { name: 'Git', desc: 'Version control', exp: '2y+' },
-        { name: 'Linux', desc: 'Server, CLI', exp: '1y+' },
-        { name: 'OCI', desc: 'Oracle Cloud', exp: '1y+' },
-        { name: 'Postman', desc: 'API testing', exp: '1y+' },
+        { name: 'Laravel', desc: 'PHP SaaS backends', startDate: new Date(2024, 4, 1) },
+        { name: 'Django', desc: 'Python web services', startDate: new Date(2025, 0, 1) },
+        { name: 'Node.js', desc: 'JavaScript APIs', startDate: new Date(2021, 4, 1) },
+        { name: '.NET', desc: 'C# enterprise APIs', startDate: new Date(2023, 4, 1) },
+      ],
+    },
+    {
+      icon: '🗄️',
+      title: 'Databases',
+      color: '#8b5cf6',
+      skills: [
+        { name: 'PostgreSQL', desc: 'Relational data modeling', startDate: new Date(2025, 11, 1) },
+        { name: 'MySQL', desc: 'Transactional systems', startDate: new Date(2021, 4, 1) },
+        { name: 'MongoDB', desc: 'Document databases', startDate: new Date(2024, 4, 1) },
+        { name: 'Redis', desc: 'Caching and queues', startDate: new Date(2024, 10, 1) },
+      ],
+    },
+    {
+      icon: '☁️',
+      title: 'Infrastructure & DevOps',
+      color: '#f97316',
+      skills: [
+        { name: 'Docker', desc: 'Containerization', startDate: new Date(2024, 4, 1) },
+        { name: 'CI/CD', desc: 'Automation pipelines', startDate: new Date(2023, 4, 1) },
+        { name: 'Git', desc: 'Version control', startDate: new Date(2020, 4, 1) },
+        { name: 'DigitalOcean', desc: 'Cloud hosting', startDate: new Date(2026, 3, 1) },
+        { name: 'Oracle Cloud', desc: 'OCI deployments', startDate: new Date(2024, 4, 1) },
+        { name: 'Firebase', desc: 'Backend services', startDate: new Date(2024, 10, 1) },
+      ],
+    },
+    {
+      icon: '🤖',
+      title: 'AI / Machine Learning',
+      color: '#0ea5e9',
+      skills: [
+        { name: 'RAG', desc: 'Retrieval-augmented generation', startDate: new Date(2026, 1, 1) },
+        { name: 'Vector Embed', desc: 'Semantic embeddings', startDate: new Date(2026, 1, 1) },
+        { name: 'PyTorch', desc: 'Deep learning models', startDate: new Date(2021, 4, 1) },
+        { name: 'Hugging Face', desc: 'Transformers ecosystem', startDate: new Date(2023, 4, 1) },
+        { name: 'NLP', desc: 'Language understanding', startDate: new Date(2023, 4, 1) },
+        { name: 'Transformers', desc: 'Large model architectures', startDate: new Date(2024, 4, 1) },
+        { name: 'LLMs', desc: 'Large language models', startDate: new Date(2024, 4, 1) },
+        { name: 'Computer Vision', desc: 'Image & video AI', startDate: new Date(2024, 4, 1) },
+        { name: 'Self-Supervised Learning', desc: 'Data-efficient training', startDate: new Date(2024, 4, 1) },
       ],
     },
   ]
