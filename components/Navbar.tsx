@@ -143,7 +143,7 @@ export default function Navbar() {
 
           <a
             className="nav-resume-desktop"
-            href="/resume.pdf"
+            href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
             target="_blank"
             style={{
               fontFamily: 'Space Mono, monospace', fontSize: 11, fontWeight: 700,

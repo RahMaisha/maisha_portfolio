@@ -27,11 +27,11 @@ const tags = ['Laravel', 'Angular', 'Next.js', 'Django', 'PostgreSQL', 'MySQL', 
 
 const workProjects = [
   {
-    name: 'CClub',
+    name: 'Social Community Platform',
     summary: 'Contributed most of the frontend and backend implementation for the live platform using Laravel, Angular, and MySQL.',
   },
   {
-    name: 'Sporteroo',
+    name: 'Sports Marketplace',
     summary: 'Delivered major full-stack development across the live product, working closely with design, QA, and product direction.',
   },
   {

@@ -5,22 +5,22 @@ import Image from 'next/image'
 
 const professionalProjects = [
   {
-    name: 'CClub',
+    name: 'Social Community Platform',
     badge: 'Client Work',
-    href: 'https://cclub.live/',
+    href: 'https://communityclub.l/',
     role: 'Fullstack Contributor',
     stack: ['Laravel', 'Angular', 'MySQL'],
     summary:
       'Built most of the frontend and backend for the live platform while collaborating with design, QA, and product direction from the team.',
     impact:
       'Production website with live chatbot experience and full-stack delivery across application flows.',
-    imagePath: '/project_images/cclub_landing.png',
-    imageAlt: 'CClub landing page preview',
+    imagePath: '/project_images/placeholder.jpg',
+    imageAlt: 'placeholder page preview',
   },
   {
-    name: 'Sporteroo',
+    name: 'Sports Marketplace',
     badge: 'Client Work',
-    href: 'https://sporteroo.com/',
+    href: 'https://sportero.com/',
     role: 'Fullstack Contributor',
     stack: ['Laravel', 'Angular', 'MySQL'],
     summary:
@@ -226,7 +226,7 @@ export default function Projects() {
             Featured <span style={{ color: '#00d4ff' }}>Work</span>
           </h2>
           <p style={{ maxWidth: 760, margin: '0 0 32px', fontSize: 14, lineHeight: 1.8, color: '#8892a4' }}>
-            Professional client work is shown separately from personal and research projects so your portfolio makes clear what you built in a team setting and what you owned independently.
+            Professional client work is shown separately from personal and research projects so portfolio makes clear what I built in a team setting and what I own independently.
           </p>
 
           <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#f5a623', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 14 }}>
