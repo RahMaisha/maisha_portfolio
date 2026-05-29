@@ -20,7 +20,7 @@ const professionalProjects = [
   {
     name: 'Sports Marketplace',
     badge: 'Client Work',
-    href: 'https://sportero.com/',
+    href: 'https://sporteroo.com/',
     role: 'Fullstack Contributor',
     stack: ['Laravel', 'Angular', 'MySQL'],
     summary:

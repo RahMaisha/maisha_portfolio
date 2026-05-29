@@ -230,12 +230,12 @@ export default function Hero() {
               </div>
 
               <p className="h-a4 hero-copy" style={{ fontSize: 16, color: '#8892a4', maxWidth: 520, lineHeight: 1.8, marginBottom: 36, fontWeight: 300 }}>
-                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>reliable systems that ship</strong> — from published Vision Transformer research to production-grade products. CS graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
+                I build <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>reliable systems that ship</strong> from published Vision Transformer research to production-grade products. CSE graduate from East West University, based in <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Dhaka, Bangladesh</strong>.
               </p>
 
               <div className="h-a5 hero-btns" style={{ display: 'flex', gap: 12, marginBottom: 40, flexWrap: 'wrap' }}>
                 <button className="hbtn-p" onClick={() => scrollTo('projects')}>View My Work</button>
-                <a className="hbtn-s" href="/resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+                <a className="hbtn-s" href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
               </div>
 
               <div className="h-a6 hero-links">

@@ -21,10 +21,10 @@ export default function About() {
   }, [])
 
   const highlights = [
-    { icon: '🏗️', title: 'Production Web-applications, SaaS & Mobile', desc: 'Led end-to-end delivery on multiple live products — architecture, APIs, frontend, deployment, and security across the full stack.' },
+    { icon: '🏗️', title: 'Production Web-applications, SaaS & Mobile', desc: 'Led end-to-end delivery on multiple live products, architecture, APIs, frontend, deployment, and security across the full stack.' },
     { icon: '🧠', title: 'Medical AI & Computer Vision', desc: 'IEEE-published hybrid ViT architecture for kidney segmentation. 98.6% diagnostic accuracy on a self-curated dataset.' },
-    { icon: '🤖', title: 'AI Systems & CRM', desc: 'Built and deployed LLM-powered systems including personalized chatbots and widgets on live commercial platforms — NLP pipelines to production interfaces.' },
-    { icon: '⚙️', title: 'Backend & Infrastructure', desc: 'Engineering a platforms for concurrent users — horizontal scaling, caching layers, and database architecture.' },
+    { icon: '🤖', title: 'AI Systems & CRM', desc: 'Built and deployed LLM-powered systems including personalized chatbots and widgets on live commercial platforms from NLP pipelines to production interfaces.' },
+    { icon: '⚙️', title: 'Backend & Infrastructure', desc: 'Engineering a platforms for concurrent users, horizontal scaling, caching layers, and database architecture.' },
   ]
 
   return (
