@@ -41,8 +41,8 @@ const workProjects = [
 ]
 
 const EXPERIENCE_START = {
-  year: 2026,
-  monthIndex: 0,
+  year: 2025,
+  monthIndex: 10,
 }
 
 function getExperienceRangeLabel() {
