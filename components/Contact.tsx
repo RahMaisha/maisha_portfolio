@@ -361,14 +361,14 @@ export default function Contact() {
                       <label className="ct-field-label" htmlFor="subject">
                         Subject
                       </label>
-                      <input className="ct-input" id="subject" name="subject" type="text" placeholder="How can we help?" required />
+                      <input className="ct-input" id="subject" name="subject" type="text" placeholder="What's this about?" required />
                     </div>
 
                     <div className="ct-field-wrap full">
                       <label className="ct-field-label" htmlFor="message">
                         Message
                       </label>
-                      <textarea className="ct-textarea" id="message" name="message" placeholder="Tell us about your project, role, or collaboration idea..." required />
+                      <textarea className="ct-textarea" id="message" name="message" placeholder="Tell me about the role, project, or collaboration..." required />
                     </div>
                   </div>
 
@@ -385,13 +385,13 @@ export default function Contact() {
                   <a className="ct-link" href="mailto:maisharahman01x@gmail.com">
                     maisharahman01x@gmail.com
                   </a>
-                  . FormSubmit may send a one-time activation email to this address before the first live submission starts arriving.
+                  . Submissions are handled by Web3Forms — your address is only used to reply.
                 </p>
               </div>
             </div>
 
             <div style={{ textAlign: 'center', marginTop: 48, fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#4a5568' }}>
-              © 2026 Maisha Rahman | Built with Next.js | Deployed on Vercel
+              © {new Date().getFullYear()} Maisha Rahman | Built with Next.js | Deployed on Vercel
             </div>
           </div>
         </div>

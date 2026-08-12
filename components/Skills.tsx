@@ -66,6 +66,7 @@ export default function Skills() {
         { name: 'Docker', desc: 'Containerization', startDate: new Date(2024, 4, 1) },
         { name: 'CI/CD', desc: 'Automation pipelines', startDate: new Date(2023, 4, 1) },
         { name: 'Git', desc: 'Version control', startDate: new Date(2020, 4, 1) },
+        { name: 'Cloudflare', desc: 'Deployment and edge delivery', startDate: new Date(2026, 5, 1) },
         { name: 'DigitalOcean', desc: 'Cloud hosting', startDate: new Date(2026, 3, 1) },
         { name: 'Oracle Cloud', desc: 'OCI deployments', startDate: new Date(2024, 4, 1) },
         { name: 'Firebase', desc: 'Backend services', startDate: new Date(2024, 10, 1) },

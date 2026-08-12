@@ -1,0 +1,197 @@
+%==============================================================================
+%  Maisha Rahman — Resume
+%  Reconstructed from the compiled PDF (original Overleaf source was lost).
+%  Compile with pdfLaTeX. Works on Overleaf with no extra setup.
+%
+%  Typeface verified against the original with `pdffonts`: Bitstream Charter
+%  for text, Computer Modern for math symbols. See the FONT block below.
+%==============================================================================
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% FONT — matches the original exactly.
+% pdffonts on the original PDF shows CharterBT-Roman/Bold/Italic for text and
+% CMSY10/CMSY9 for math symbols. That combination is what plain `charter` gives:
+% it sets the roman family to Bitstream Charter and leaves math as Computer
+% Modern. Do NOT swap this for mathdesign/XCharter — those also replace the math
+% fonts, which would change the $|$ separators and $\bullet$ bullets.
+\usepackage{charter}
+\usepackage[
+  left=0.6in, right=0.6in, top=0.55in, bottom=0.6in
+]{geometry}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{microtype}
+\usepackage{needspace}   % stops a heading being stranded at the foot of a page
+
+%------------------------------------------------------------------ colours ---
+% Defined before hyperref loads, so the link colours below resolve.
+\definecolor{navy}{HTML}{1F3864}      % section headings + name
+\definecolor{linkblue}{HTML}{2B579A}  % hyperlinks
+\definecolor{midgray}{HTML}{6B6B6B}   % parentheticals, tech stacks, dates
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=linkblue,
+  linkcolor=linkblue,
+  pdftitle={Maisha Rahman --- Resume},
+  pdfauthor={Maisha Rahman}
+}
+
+%----------------------------------------------------------------- sections ---
+\titleformat{\section}
+  {\normalsize\bfseries\color{navy}}
+  {}{0em}{}
+  [\vspace{-0.7em}\color{navy}\rule{\textwidth}{0.7pt}]
+\titlespacing*{\section}{0pt}{8pt}{5pt}
+
+% Use \cvsection instead of \section: reserves space so a heading is never
+% stranded alone at the foot of a page with its content pushed overleaf.
+\newcommand{\cvsection}[1]{\needspace{5\baselineskip}\section{#1}}
+
+\setlist[itemize]{
+  leftmargin=1.3em, labelsep=0.5em, itemsep=1.2pt,
+  topsep=2.5pt, parsep=0pt, label=$\bullet$
+}
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+
+%----------------------------------------------------------------- commands ---
+% Two-column line: content left, meta hard-right. tabular* keeps it on ONE line
+% instead of letting \hfill wrap the meta onto a second line.
+\newcommand{\tworow}[2]{%
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    #1 & #2
+  \end{tabular*}\par
+}
+
+% #1 role  #2 organisation  #3 date + location
+\newcommand{\role}[3]{%
+  \needspace{4\baselineskip}%
+  \tworow{\textbf{#1} {\color{midgray}$|$} \textit{#2}}{\small #3}%
+  \vspace{1pt}
+}
+
+% #1 name  #2 link text  #3 link url  #4 meta (stack | year)
+\newcommand{\project}[4]{%
+  \needspace{4\baselineskip}%
+  \tworow{\textbf{#1}}{\footnotesize\href{#3}{#2} {\color{midgray}$|$ #4}}%
+  \vspace{1pt}
+}
+
+% #1 name (no link)  #2 meta
+\newcommand{\projectnolink}[2]{%
+  \needspace{4\baselineskip}%
+  \tworow{\textbf{#1}}{\footnotesize\color{midgray}#2}%
+  \vspace{1pt}
+}
+
+\newcommand{\sep}{{\color{midgray}\;$|$\;}}
+
+%==============================================================================
+\begin{document}
+
+%--------------------------------------------------------------- header ------
+\begin{center}
+  {\LARGE\bfseries\color{navy} MAISHA RAHMAN}\\[5pt]
+  {\small
+    \href{mailto:maisharahman01x@gmail.com}{maisharahman01x@gmail.com} \sep
+    +880 1980 312 210 \sep
+    Dhaka, Bangladesh
+  }\\[3pt]
+  {\small
+    \href{https://maisha-portfolio-nine.vercel.app}{maisha-portfolio-nine.vercel.app} \sep
+    \href{https://github.com/RahMaisha}{github.com/RahMaisha} \sep
+    \href{https://linkedin.com/in/maisha-rahman-01x}{linkedin.com/in/maisha-rahman-01x}
+  }
+\end{center}
+\vspace{2pt}
+
+%------------------------------------------------------------ experience -----
+\cvsection{Experience}
+
+\role{Software Developer (In-house)}{CellsTech --- Armani Group}{Jun 2026 -- Present {\color{midgray}$|$} Dhaka, Bangladesh}
+\begin{itemize}
+  \item Sole \textbf{in-house developer for Armani Group}, embedded at group headquarters and owning the full delivery lifecycle across the group's internal and commercial platforms --- requirement analysis, system design, UI/UX, frontend, backend, unit testing, and release.
+  \item Built a \textbf{full-stack guest and visitor management CRM} with multi-criteria filtering, blacklist enforcement, interview tracking, guest-category analytics, automated flagging rules, and a stakeholder dashboard for raising and approving meeting requests.
+  \item Shipped a \textbf{live full-stack e-commerce platform} with a comprehensive admin panel: bulk product import via \textbf{CSV}, dynamic gift vouchers, order tracking, inventory management, sales analytics, \textbf{WhatsApp integration}, and an embedded \textbf{chatbot}.
+  \item Assigned the \textbf{redevelopment of an MSME e-commerce marketplace} originally built by a senior engineer to a scope comparable to Amazon and Daraz --- upgrading and re-developing the existing system and preparing it for commercial launch.
+  \item Delivered a \textbf{resume builder} for \textbf{NTI Learn}, an educational platform offering online courses, from requirement gathering through interface design to production release.
+  \item \textbf{Own deployment and release} across every system built, running regular production deploys on \textbf{Cloudflare} and \textbf{Firebase} and handling post-release support.
+  \item Engineering point of contact for \textbf{product managers, business analysts, SQA, senior engineers, design, and PR}, translating business requirements into tested, shipped features.
+  \item Maintain and extend \textbf{multiple pre-built company systems and web apps} across varied stacks including \textbf{Node.js} and \textbf{PostgreSQL}, delivering upgrades, bug fixes, and ongoing production support.
+\end{itemize}
+
+\vspace{3pt}
+\role{Software Engineer, Full Stack}{Inkphase}{Nov 2025 -- May 2026 {\color{midgray}$|$} Dhaka, Bangladesh}
+\begin{itemize}
+  \item Worked as a full-stack engineer across 4 production web-applications, including 2 SaaS products (a contact management platform, and an AI chatbot service) handling both frontend and backend delivery for client projects across various industries.
+  \item Built REST APIs and database schemas across \textbf{PostgreSQL}, \textbf{MySQL}, and \textbf{NoSQL}; worked on query performance, data integrity, and role-based access control for live applications.
+  \item Built a JSON-to-XML transformation service for a client using \textbf{Django} and \textbf{PostgreSQL}, covering nested schema mapping, structured data conversion, and input validation.
+  \item Contributed to a high-traffic news platform ahead of launch, handling frontend implementation and participating in architecture discussions around scalability, caching, and database design.
+  \item Managed deployments across \textbf{Firebase}, \textbf{Vercel}, and \textbf{cPanel}; used \textbf{Git-based deployment workflows}, handled application updates, and supported production maintenance including basic security practices (CSRF protection, JWT authentication, rate limiting).
+\end{itemize}
+
+%------------------------------------------------------------- education -----
+\cvsection{Education}
+
+\textbf{East West University}\hfill {\small Dhaka, Bangladesh {\color{midgray}$|$} 2022 -- 2025}\par
+\textit{B.Sc. Computer Science \& Engineering} --- Intelligent Systems and Data Science\par
+\textbf{Medha Lalon Scholarship} {\small\color{midgray}(top 3.2\% of all students)}
+
+%---------------------------------------------------------------- skills -----
+\cvsection{Skills}
+
+\begin{tabularx}{\textwidth}{@{}p{0.14\textwidth}X@{}}
+  \textbf{Languages}    & Python, JavaScript, TypeScript, Java, C\# \\[2pt]
+  \textbf{Frameworks}   & Laravel, Angular, Next.js, Django, React, Node.js, FastAPI, .NET \\[2pt]
+  \textbf{Data \& Infra} & PostgreSQL, MySQL, MongoDB, Docker, Cloudflare, Firebase, cPanel, Vercel, Linux, CI/CD, Git \\[2pt]
+  \textbf{AI / ML}      & PyTorch, NLP, Computer Vision, Transformers, LLMs, RAG, Vector Embeddings \\[2pt]
+  \textbf{Practices}    & System Design, Requirement Analysis, Unit Testing, UI/UX, Cross-functional Collaboration \\
+\end{tabularx}
+
+%-------------------------------------------------------------- projects -----
+\cvsection{Projects}
+
+\project{HealthSync --- AI Healthcare Diagnostic Platform}{GitHub}{https://github.com/RahMaisha/Health-Sync-Capstone}{Laravel, FastAPI, PyTorch, MySQL, Docker $|$ 2025}
+\begin{itemize}
+  \item Built an end-to-end AI system for kidney stone detection using a hybrid Vision Transformer model with self-supervised learning on \textbf{10k+ curated medical image samples}, achieving \textbf{98.6\% diagnostic accuracy}.
+  \item Integrated a \textbf{FastAPI inference service with a Laravel backend} for real-time prediction and API-based model serving.
+\end{itemize}
+
+\vspace{3pt}
+\projectnolink{Maternity Care Platform}{Cloud Camp BD Hackathon $|$ RAG, Vector Embeddings, NLP $|$ 2026}
+\begin{itemize}
+  \item Built a \textbf{bilingual (Bangla/English) maternity care web app} with \textbf{role-based accounts}, giving partners and family members scoped access to the mother's profile --- mood tracking, month-by-month nutrition and health guidance, and fetal development stages.
+  \item Owned the \textbf{AI pregnancy assistant} end to end: scraped and parsed guidance from vetted medical sources including \textbf{WHO} and US national health bodies into a normalised corpus.
+  \item Embedded the corpus into a \textbf{vector store} and served grounded answers through a \textbf{RAG pipeline} supporting Bangla as well as English queries.
+\end{itemize}
+
+\vspace{3pt}
+\project{Multi-tenant AI Chatbot Platform}{GitHub}{https://github.com/RahMaisha}{Laravel, JavaScript, MySQL, OpenRouter API $|$ 2026}
+\begin{itemize}
+  \item Built a multi-tenant LLM chatbot platform using \textbf{OpenRouter API} with isolated conversations and per-client configuration support.
+  \item Developed a framework-agnostic JavaScript embed layer deployable across React, Next.js, Angular, Laravel, Django, Flask, Node, and Shopify environments.
+  \item Built an admin dashboard for prompt configuration, chatbot behavior control, and tenant-level management; deployed to production on cPanel.
+\end{itemize}
+
+%--------------------------------------------------- publications & data -----
+\cvsection{Publications \& Datasets}
+\begin{itemize}
+  \item \textbf{MAE-ViT: Hybrid SSL ViT for Kidney Segmentation} {\color{midgray}$|$} ICCIT 2025 {\color{midgray}$|$} \href{https://doi.org/10.1109/ICCIT68739.2025.11491313}{doi:10.1109/ICCIT68739.2025.11491313}
+  \item \textbf{EDIBLESEED Dataset} {\color{midgray}$|$} Mendeley Data, 2025 {\color{midgray}$|$} \href{https://doi.org/10.17632/9xgk2vc3sv.2}{doi:10.17632/9xgk2vc3sv.2}
+\end{itemize}
+
+%----------------------------------------------------------- leadership ------
+\cvsection{Leadership \& Activities}
+
+\textbf{Editor \& Creative Lead, EWU Robotics Club} {\small\color{midgray}(2023--25)} --- managed technical branding and club communications.\par
+\textbf{LFR Team Leader} {\small\color{midgray}(2024)} --- led hardware and firmware team for a line-following robot.\par
+\textbf{Volunteer:} Girl Guides {\color{midgray}$|$} Bangladesh Red Crescent Society \hspace{1.5em} \textbf{Languages:} Bangla (Native), English (Fluent)
+
+\end{document}

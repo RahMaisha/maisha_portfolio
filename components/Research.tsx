@@ -130,7 +130,13 @@ export default function Research() {
             {researchItems.map((item) => (
               <a key={item.title} href={item.href} target="_blank" rel="noreferrer" className="rs-card rs-reveal">
                 <div className="rs-shot">
-                  <Image src={item.imagePath} alt={item.imageAlt} width={1200} height={720} />
+                  <Image
+                    src={item.imagePath}
+                    alt={item.imageAlt}
+                    width={1200}
+                    height={720}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                  />
                 </div>
                 <div
                   style={{

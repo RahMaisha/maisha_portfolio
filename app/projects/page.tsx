@@ -2,12 +2,94 @@ import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 
 const allProjects = [
-  // Professional Projects
+  // Professional Projects — CellsTech / Armani Group
   {
     section: 'professional',
-    name: 'CClub',
+    employer: 'CellsTech · Armani Group',
+    period: 'Jun 2026 – Present',
+    name: 'Guest & Visitor CRM',
+    badge: 'Internal Tool',
+    // Internal system — described only, no screenshots or public link.
+    href: '',
+    role: 'Sole Fullstack Developer',
+    stack: ['Laravel', 'Angular', 'MySQL', 'REST APIs'],
+    summary:
+      'End-to-end visitor tracking CRM with multi-criteria filtering, blacklist enforcement, interview tracking, guest-category analytics, automated flagging rules, and a stakeholder dashboard for raising and approving meeting requests.',
+    impact:
+      'Owned the full lifecycle solo: requirement analysis, system design, UI/UX, frontend, backend, and unit testing.',
+  },
+  {
+    section: 'professional',
+    employer: 'CellsTech · Armani Group',
+    period: 'Jun 2026 – Present',
+    name: 'E-commerce Platform',
+    badge: 'Live Product',
+    // TODO: add the public storefront URL here to surface a "Visit" link.
+    href: '',
+    role: 'Sole Fullstack Developer',
+    stack: ['Laravel', 'Angular', 'MySQL', 'WhatsApp API', 'Chatbot'],
+    summary:
+      'Full-stack storefront backed by a deep admin panel: bulk product import from CSV, dynamic gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration, and an embedded chatbot.',
+    impact:
+      'Complete commerce stack built and shipped single-handedly, from system design through to production release.',
+  },
+  {
+    section: 'professional',
+    employer: 'CellsTech · Armani Group',
+    period: 'Jun 2026 – Present',
+    name: 'MSME E-Commerce Marketplace',
+    badge: 'Platform Handover',
+    // TODO: add the public URL once it launches.
+    href: '',
+    role: 'Upgrade & Redevelopment',
+    stack: ['Laravel', 'Angular', 'MySQL'],
+    summary:
+      'Multi-vendor MSME marketplace originally built by a senior engineer to a scope comparable to Amazon and Daraz. Handed to me for upgrade and redevelopment, and for preparing the platform for commercial launch.',
+    impact:
+      'Working inside an established production-scale codebase — reading someone else’s architecture, extending it, and taking it to launch.',
+  },
+  // -------------------------------------------------------------------------
+  // Inventory Management System — build starts Sep 2026.
+  // Uncomment this entry once it is actually built and shipped.
+  // {
+  //   section: 'professional',
+  //   employer: 'CellsTech · Armani Group',
+  //   period: 'Jun 2026 – Present',
+  //   name: 'Inventory Management System',
+  //   badge: 'Internal Tool',
+  //   href: '',
+  //   role: 'Sole Fullstack Developer',
+  //   stack: ['Laravel', 'Angular', 'MySQL'],
+  //   summary:
+  //     'Inventory management system for the group brand, covering stock tracking, movement history, and reporting.',
+  //   impact:
+  //     'Built solo from requirement analysis through system design, implementation, and unit testing.',
+  // },
+  // -------------------------------------------------------------------------
+  {
+    section: 'professional',
+    employer: 'CellsTech · Armani Group',
+    period: 'Jun 2026 – Present',
+    name: 'Resume Builder — NTI Learn',
+    badge: 'EdTech Feature',
+    // TODO: add the NTI Learn URL here to surface a "Visit" link.
+    href: '',
+    role: 'Fullstack Developer',
+    stack: ['Laravel', 'Angular', 'MySQL'],
+    summary:
+      'Resume-building tool for an educational platform offering online courses, taking the feature from requirement gathering through interface design to production release.',
+    impact:
+      'Shipped a user-facing feature on a live learning platform, coordinating with product, design, and SQA.',
+  },
+  // Professional Projects — Inkphase
+  {
+    section: 'professional',
+    employer: 'Inkphase',
+    period: 'Nov 2025 – May 2026',
+    name: 'Social Community Platform',
     badge: 'Client Work',
-    href: 'https://cclub.live/',
+    // Client asked not to be named or linked — anonymised on purpose. Do not add a URL here.
+    href: '',
     role: 'Fullstack Contributor',
     stack: ['Laravel', 'Angular', 'MySQL'],
     summary:
@@ -15,10 +97,12 @@ const allProjects = [
     impact:
       'Production website with live chatbot experience and full-stack delivery across application flows.',
     imagePath: '/project_images/cclub_landing.png',
-    imageAlt: 'CClub landing page preview',
+    imageAlt: 'Community platform landing page preview',
   },
   {
     section: 'professional',
+    employer: 'Inkphase',
+    period: 'Nov 2025 – May 2026',
     name: 'Sporteroo',
     badge: 'Client Work',
     href: 'https://sporteroo.com/',
@@ -33,6 +117,8 @@ const allProjects = [
   },
   {
     section: 'professional',
+    employer: 'Inkphase',
+    period: 'Nov 2025 – May 2026',
     name: 'Multi-tenant chatbot platform',
     badge: 'Behind Login',
     href: '',
@@ -42,7 +128,7 @@ const allProjects = [
       'Developed a multi-tenant chatbot platform integrating third-party LLM APIs with customer-facing web applications and internal management dashboards.',
     impact:
       'Best shown with screenshots because the platform is private and not accessible from the public site.',
-    imagePath: '/project_images/chatbot_dashboard.png',
+    imagePath: '/project_images/chatbot_dashboard1.png',
     imageAlt: 'Multi-tenant chatbot platform preview',
   },
   // Featured Projects
@@ -83,6 +169,7 @@ const allProjects = [
 export default function ProjectsPage() {
   const professionalProjects = allProjects.filter((p) => p.section === 'professional')
   const personalProjects = allProjects.filter((p) => p.section === 'personal')
+  const employers = Array.from(new Set(professionalProjects.map((p) => p.employer)))
 
   return (
     <main>
@@ -198,6 +285,15 @@ export default function ProjectsPage() {
               padding:3px 8px;
               border-radius:4px;
             }
+            .pj-employer {
+              display:flex;
+              align-items:center;
+              gap:8px;
+              font-family:'Fira Code', monospace;
+              font-size:12px;
+              color:#8892a4;
+              margin-bottom:14px;
+            }
             .projects-inner { padding: 0 48px; }
             @media (max-width: 980px) {
               .pj-grid-three { grid-template-columns:repeat(2, minmax(0, 1fr)); }
@@ -225,41 +321,58 @@ export default function ProjectsPage() {
                 Professional work
                 <span style={{ flex: 1, height: 1, background: 'rgba(245,166,35,0.2)' }} />
               </div>
-              <div className="pj-grid-three" style={{ marginBottom: 20 }}>
-                {professionalProjects.map((project) => (
-                  <div key={project.name} className="pj-card">
-                    {project.imagePath && (
-                      <div className="pj-shot">
-                        <Image src={project.imagePath} alt={project.imageAlt} width={1200} height={720} />
-                      </div>
-                    )}
-                    <span className="pj-badge">{project.badge}</span>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start', marginBottom: 8 }}>
-                      <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#e8eaf0' }}>{project.name}</div>
-                      {project.href && (
-                        <a
-                          href={project.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ color: '#00d4ff', textDecoration: 'none', fontFamily: 'Fira Code, monospace', fontSize: 11, whiteSpace: 'nowrap' }}
-                        >
-                          Visit
-                        </a>
-                      )}
-                    </div>
-                    <div className="pj-meta">{project.role}</div>
-                    <p style={{ fontSize: 13, color: '#8892a4', lineHeight: 1.7, margin: 0 }}>{project.summary}</p>
-                    <div className="pj-impact">{project.impact}</div>
-                    <div className="pj-tags">
-                      {project.stack.map((tag) => (
-                        <span key={tag} className="pt">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+              {employers.map((employer) => (
+                <div key={employer} style={{ marginBottom: 32 }}>
+                  <div className="pj-employer">
+                    <span style={{ color: '#e8eaf0', fontWeight: 600 }}>{employer}</span>
+                    <span style={{ color: '#4a5568' }}>·</span>
+                    <span>{professionalProjects.find((p) => p.employer === employer)?.period}</span>
                   </div>
-                ))}
-              </div>
+                  <div className="pj-grid-three">
+                    {professionalProjects
+                      .filter((p) => p.employer === employer)
+                      .map((project) => (
+                        <div key={project.name} className="pj-card">
+                          {project.imagePath && (
+                            <div className="pj-shot">
+                              <Image
+                                src={project.imagePath}
+                                alt={project.imageAlt}
+                                width={1200}
+                                height={720}
+                                sizes="(max-width: 768px) 100vw, (max-width: 980px) 50vw, 33vw"
+                              />
+                            </div>
+                          )}
+                          <span className="pj-badge">{project.badge}</span>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start', marginBottom: 8 }}>
+                            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#e8eaf0' }}>{project.name}</div>
+                            {project.href && (
+                              <a
+                                href={project.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ color: '#00d4ff', textDecoration: 'none', fontFamily: 'Fira Code, monospace', fontSize: 11, whiteSpace: 'nowrap' }}
+                              >
+                                Visit
+                              </a>
+                            )}
+                          </div>
+                          <div className="pj-meta">{project.role}</div>
+                          <p style={{ fontSize: 13, color: '#8892a4', lineHeight: 1.7, margin: 0 }}>{project.summary}</p>
+                          <div className="pj-impact">{project.impact}</div>
+                          <div className="pj-tags">
+                            {project.stack.map((tag) => (
+                              <span key={tag} className="pt">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Personal and Research Projects */}

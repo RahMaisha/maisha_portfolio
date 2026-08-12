@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+/* Fonts are loaded via <link rel="preconnect"> + stylesheet in app/layout.tsx.
+   A CSS @import here would serialise the request behind this file and block render. */
 @import "tailwindcss";
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

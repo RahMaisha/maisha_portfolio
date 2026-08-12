@@ -258,7 +258,7 @@ export default function Hero() {
             <div className="hero-photo-col">
               <div className="photo-anim avatar-shell">
                 <div className="avatar-frame">
-                  <Image src="/profile.jpeg" alt="Portrait of Maisha Rahman" width={640} height={640} priority />
+                  <Image src="/profile.jpeg" alt="Portrait of Maisha Rahman" width={640} height={640} sizes="320px" priority />
                 </div>
               </div>
             </div>

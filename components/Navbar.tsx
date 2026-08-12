@@ -10,7 +10,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -91,9 +92,10 @@ export default function Navbar() {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '12px 0',
-        background: 'transparent',
-        backdropFilter: 'none',
-        borderBottom: 'none',
+        background: scrolled ? 'rgba(5,5,10,0.82)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
         transition: 'all 0.3s',
       }}>
         <div style={{
@@ -169,7 +171,7 @@ export default function Navbar() {
         {navLinks.map(id => (
           <button key={id} className="mobile-link" onClick={() => scrollTo(id)}>{id}</button>
         ))}
-        <a className="mobile-resume" href="/resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+        <a className="mobile-resume" href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
       </div>
     </>
   )

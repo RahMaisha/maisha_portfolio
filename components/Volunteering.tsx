@@ -101,7 +101,7 @@ export default function Volunteering() {
             {volunteeringOrgs.map((org) => (
               <div key={org.name} className="volunteer-card vol-reveal">
                 <div className="volunteer-icon">
-                  <Image src={org.imagePath} alt={org.imageAlt} width={80} height={80} />
+                  <Image src={org.imagePath} alt={org.imageAlt} width={80} height={80} sizes="80px" />
                 </div>
                 <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 6 }}>{org.name}</div>
                 <div style={{ fontSize: 12, color: '#8892a4' }}>{org.role}</div>

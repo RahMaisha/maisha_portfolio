@@ -24,7 +24,7 @@ export default function About() {
     { icon: '🏗️', title: 'Production Web-applications, SaaS & Mobile', desc: 'Led end-to-end delivery on multiple live products, architecture, APIs, frontend, deployment, and security across the full stack.' },
     { icon: '🧠', title: 'Medical AI & Computer Vision', desc: 'IEEE-published hybrid ViT architecture for kidney segmentation. 98.6% diagnostic accuracy on a self-curated dataset.' },
     { icon: '🤖', title: 'AI Systems & CRM', desc: 'Built and deployed LLM-powered systems including personalized chatbots and widgets on live commercial platforms from NLP pipelines to production interfaces.' },
-    { icon: '⚙️', title: 'Backend & Infrastructure', desc: 'Engineering a platforms for concurrent users, horizontal scaling, caching layers, and database architecture.' },
+    { icon: '⚙️', title: 'Backend & Infrastructure', desc: 'Engineering platforms for concurrent users, with horizontal scaling, caching layers, and considered database architecture.' },
   ]
 
   return (
@@ -36,7 +36,10 @@ export default function About() {
         .hl-ico { width:36px;height:36px;border-radius:8px;background:rgba(0,212,255,.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0; }
         .hl-t { font-size:13px;font-weight:600;color:#e8eaf0;margin-bottom:3px; }
         .hl-s { font-size:12px;color:#8892a4;line-height:1.5; }
-        .edu-pill { display:inline-flex;align-items:center;gap:10px;background:#0d1117;border:1px solid rgba(0,212,255,.15);border-radius:100px;padding:10px 20px;margin-bottom:36px;flex-wrap:wrap; }
+        .pill-row { display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px; }
+        .edu-pill { display:inline-flex;align-items:center;gap:10px;background:#0d1117;border:1px solid rgba(0,212,255,.15);border-radius:100px;padding:10px 20px;flex-wrap:wrap; }
+        .edu-pill.is-role { border-color:rgba(34,197,94,.25); }
+        .role-dot { width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,.12); }
         .about-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px; }
         .about-inner { padding:0 48px; }
         @media (max-width: 960px) {
@@ -58,14 +61,22 @@ export default function About() {
             Who I <span style={{ color: '#00d4ff' }}>Am</span>
           </h2>
 
-          {/* edu pill — Top Scholar restored */}
-          <div className="edu-pill">
-            <span style={{ fontSize: 16 }}>🎓</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: '#e8eaf0' }}>B.Sc Computer Science & Engineering</span>
-            <span style={{ color: '#4a5568' }}>·</span>
-            <span style={{ fontSize: 13, color: '#8892a4' }}>East West University</span>
-            <span style={{ color: '#4a5568' }}>·</span>
-            <span style={{ fontSize: 13, color: '#00d4ff', fontFamily: 'Fira Code, monospace' }}> ✦</span>
+          {/* credential pills — current role leads, education follows */}
+          <div className="pill-row">
+            <div className="edu-pill is-role">
+              <span className="role-dot" />
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#e8eaf0' }}>In-house Software Developer</span>
+              <span style={{ color: '#4a5568' }}>·</span>
+              <span style={{ fontSize: 13, color: '#8892a4' }}>CellsTech · Armani Group</span>
+            </div>
+            <div className="edu-pill">
+              <span style={{ fontSize: 16 }}>🎓</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#e8eaf0' }}>B.Sc Computer Science & Engineering</span>
+              <span style={{ color: '#4a5568' }}>·</span>
+              <span style={{ fontSize: 13, color: '#8892a4' }}>East West University</span>
+              <span style={{ color: '#4a5568' }}>·</span>
+              <span style={{ fontSize: 13, color: '#00d4ff', fontFamily: 'Fira Code, monospace' }}> ✦</span>
+            </div>
           </div>
 
           <div className="about-grid">
@@ -77,7 +88,11 @@ export default function About() {
               </p>
 
               <p className="reveal" style={{ fontSize: 15, color: '#8892a4', lineHeight: 1.85, marginBottom: 16, fontWeight: 300 }}>
-                At <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Inkphase</strong>, I’ve contributed to multiple production applications including SaaS platforms, CRM systems, and e-commerce products. I’ve also worked on LLM-integrated chatbot systems deployed across client websites, building backend APIs, frontend interfaces, and database-driven workflows using Laravel, Django, PostgreSQL, Angular, and MySQL.
+                I’m currently the <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>in-house software developer for Armani Group</strong> through its tech arm <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>CellsTech</strong>, based at group headquarters as the sole engineer on the group’s software. I’ve delivered <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>multiple systems and web applications</strong> there — including a guest and visitor management CRM, a full-featured e-commerce platform, and an MSME marketplace — typically running several in parallel and carrying each one end to end through requirement analysis, system design, UI/UX, frontend, backend, and unit testing. Alongside the build work I’m the engineering point of contact for product, business analysis, SQA, design, and PR.
+              </p>
+
+              <p className="reveal" style={{ fontSize: 15, color: '#8892a4', lineHeight: 1.85, marginBottom: 16, fontWeight: 300 }}>
+                Previously at <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>Inkphase</strong>, I contributed to multiple production applications including SaaS platforms, CRM systems, e-commerce products, and a high-traffic news platform. I also worked on LLM-integrated chatbot systems deployed across client websites, building backend APIs, frontend interfaces, and database-driven workflows using Laravel, Django, PostgreSQL, Angular, and MySQL.
               </p>
 
               <p className="reveal" style={{ fontSize: 15, color: '#8892a4', lineHeight: 1.85, marginBottom: 16, fontWeight: 300 }}>
