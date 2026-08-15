@@ -1,39 +1,27 @@
-'use client'
-
 import Image from 'next/image'
-import { useEffect } from 'react'
+import Card3D from './Card3D'
+import Reveal from './Reveal'
+import Section from './Section'
 
 const researchItems = [
   {
     type: 'Conference Paper',
-    typeColor: '#00d4ff',
-    lineColor: 'rgba(0,212,255,0.2)',
+    venue: 'IEEE ICCIT 2025',
+    doi: '10.1109/ICCIT68739.2025.11491313',
     title: 'MAE-ViT: Hybrid SSL Vision Transformer for Kidney Segmentation',
     description:
       'Hybrid masked autoencoder and vision transformer for high-precision medical image segmentation with limited labeled data.',
-    badge: 'ICCIT 2025 | DOI: 10.1109/ICCIT68739.2025.11491313',
-    badgeStyles: {
-      background: 'rgba(0,212,255,0.08)',
-      color: '#00d4ff',
-      border: '1px solid rgba(0,212,255,0.2)',
-    },
     href: 'https://doi.org/10.1109/ICCIT68739.2025.11491313',
     imagePath: '/project_images/Mae-vit_publication.png',
     imageAlt: 'MAE-ViT publication preview',
   },
   {
     type: 'Open Dataset',
-    typeColor: '#f5a623',
-    lineColor: 'rgba(245,166,35,0.2)',
+    venue: 'Mendeley Data',
+    doi: '10.17632/9xgk2vc3sv.2',
     title: 'EDIBLESEED Dataset',
     description:
       'Publicly available image dataset on Mendeley Data for edible seed classification and computer vision research tasks.',
-    badge: 'Mendeley Data | DOI: 10.17632/9xgk2vc3sv.2',
-    badgeStyles: {
-      background: 'rgba(245,166,35,0.07)',
-      color: '#f5a623',
-      border: '1px solid rgba(245,166,35,0.2)',
-    },
     href: 'https://data.mendeley.com/datasets/9xgk2vc3sv/2',
     imagePath: '/project_images/edible-seed_publication.png',
     imageAlt: 'EDIBLESEED Mendeley dataset preview',
@@ -41,141 +29,55 @@ const researchItems = [
 ]
 
 export default function Research() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            ;(entry.target as HTMLElement).style.animation = 'fadeUp .6s ease forwards'
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    document.querySelectorAll('.rs-reveal').forEach((element) => {
-      ;(element as HTMLElement).style.opacity = '0'
-      observer.observe(element)
-    })
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <>
-      <style>{`
-        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .rs-card {
-          background:#0d1117;
-          border:1px solid rgba(255,255,255,.06);
-          border-radius:16px;
-          padding:20px;
-          transition:all .3s;
-          text-decoration:none;
-          display:block;
-          color:inherit;
-        }
-        .rs-card:hover {
-          border-color:rgba(0,212,255,.25);
-          transform:translateY(-4px);
-          box-shadow:0 16px 48px rgba(0,0,0,.35);
-        }
-        .rs-card:focus-visible {
-          outline:2px solid #00d4ff;
-          outline-offset:3px;
-        }
-        .rs-shot {
-          height:190px;
-          border-radius:12px;
-          overflow:hidden;
-          border:1px solid rgba(255,255,255,.08);
-          background:rgba(255,255,255,.02);
-          margin-bottom:16px;
-        }
-        .rs-shot img {
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          object-position:top center;
-          display:block;
-        }
-        .research-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-        .research-inner { padding: 0 48px; }
-        .rs-linkline {
-          margin-top:14px;
-          font-family:'Fira Code', monospace;
-          font-size:11px;
-          color:#8892a4;
-        }
-        @media (max-width: 900px) {
-          .research-grid { grid-template-columns:1fr; }
-          .research-inner { padding: 0 32px !important; }
-        }
-        @media (max-width: 768px) {
-          .research-inner { padding: 0 20px !important; }
-          .rs-card { padding:18px; }
-          .rs-shot { height:170px; }
-        }
-      `}</style>
-
-      <section id="research" style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <div className="research-inner" style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
-          <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>05. research</div>
-          <h2 style={{ fontSize: 'clamp(28px,3vw,36px)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 40 }}>
-            Publications &amp; <span style={{ color: '#00d4ff' }}>Datasets</span>
-          </h2>
-
-          <div className="research-grid">
-            {researchItems.map((item) => (
-              <a key={item.title} href={item.href} target="_blank" rel="noreferrer" className="rs-card rs-reveal">
-                <div className="rs-shot">
+    <Section
+      id="research"
+      index="04"
+      label="Research"
+      title="Published work in computer vision and self-supervised learning."
+      tone="paper-2"
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        {researchItems.map((item) => (
+          <Reveal key={item.title} as="article">
+            <Card3D className="h-full">
+              <a href={item.href} target="_blank" rel="noreferrer" className="group flex h-full flex-col">
+                <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-lg bg-paper-2">
                   <Image
                     src={item.imagePath}
                     alt={item.imageAlt}
-                    width={1200}
-                    height={720}
-                    sizes="(max-width: 900px) 100vw, 50vw"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
-                <div
-                  style={{
-                    fontFamily: 'Fira Code, monospace',
-                    fontSize: 9,
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    color: item.typeColor,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    marginBottom: 14,
-                  }}
-                >
-                  {item.type}
-                  <span style={{ flex: 1, height: 1, background: item.lineColor }} />
+
+                <div className="mb-4 flex items-baseline justify-between gap-4">
+                  <span className="u-label rounded-full border border-rule-strong px-2.5 py-1 !text-[0.625rem] !text-ink-2">
+                    {item.type}
+                  </span>
+                  <span className="u-label !text-ink shrink-0 underline decoration-rule-strong underline-offset-4">Open &rarr;</span>
                 </div>
-                <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, lineHeight: 1.4 }}>{item.title}</div>
-                <div style={{ fontSize: 13, color: '#8892a4', lineHeight: 1.7, marginBottom: 18, fontWeight: 300 }}>{item.description}</div>
-                <span
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    fontFamily: 'Fira Code, monospace',
-                    fontSize: 10,
-                    padding: '5px 14px',
-                    borderRadius: 20,
-                    ...item.badgeStyles,
-                  }}
-                >
-                  {item.badge}
-                </span>
-                <div className="rs-linkline">Open publication</div>
+
+                <h3 className="max-w-[30ch] text-[1.3125rem] font-medium leading-tight tracking-[-0.025em]">
+                  {item.title}
+                </h3>
+
+                <p className="mt-4 max-w-[52ch] text-[0.9375rem] leading-relaxed text-ink-2">
+                  {item.description}
+                </p>
+
+                <dl className="mt-auto grid grid-cols-[5rem_minmax(0,1fr)] gap-x-4 gap-y-1 pt-7">
+                  <dt className="u-label">Venue</dt>
+                  <dd className="text-[0.875rem]">{item.venue}</dd>
+                  <dt className="u-label">DOI</dt>
+                  <dd className="u-mono break-all text-[0.8125rem] text-ink-2">{item.doi}</dd>
+                </dl>
               </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+            </Card3D>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
   )
 }

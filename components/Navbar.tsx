@@ -1,177 +1,165 @@
 'use client'
-import { useState, useEffect } from 'react'
+
+import { useCallback, useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+
+const NAV = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'work', label: 'Work' },
+  { id: 'research', label: 'Research' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+]
 
 export default function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollTo = (id: string) => {
-    if (pathname !== '/') {
-      setMenuOpen(false)
-      router.push(`/#${id}`)
-      return
+  // Track which section owns the viewport so the masthead can mark it.
+  useEffect(() => {
+    if (pathname !== '/') return
+
+    const sections = NAV.map((item) => document.getElementById(item.id)).filter(
+      (el): el is HTMLElement => Boolean(el)
+    )
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActive(visible.target.id)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5] }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [pathname])
+
+  // Lock the page while the mobile sheet is open.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
     }
+  }, [menuOpen])
 
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setMenuOpen(false)
-  }
-
-  const navLinks = ['about', 'skills', 'experience', 'projects', 'hackathon', 'volunteering', 'research', 'contact']
+  const go = useCallback(
+    (id: string) => {
+      setMenuOpen(false)
+      if (pathname !== '/') {
+        router.push(`/#${id}`)
+        return
+      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    },
+    [pathname, router]
+  )
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-        .nav-links-desktop { display: flex; gap: 4px; }
-        .nav-resume-desktop { display: block; }
-        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
-        .hamburger span { display: block; width: 22px; height: 2px; background: #e8eaf0; border-radius: 2px; transition: all 0.3s; }
-        .mobile-menu {
-          display: none;
-          position: fixed;
-          top: 64px;
-          left: 0;
-          right: 0;
-          background: rgba(5,5,10,0.97);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(0,212,255,0.08);
-          padding: 16px 0;
-          z-index: 99;
-          flex-direction: column;
-        }
-        .mobile-menu.open { display: flex; }
-        .mobile-link {
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-family: 'Space Mono', monospace;
-          font-size: 13px;
-          color: #6b6a88;
-          padding: 12px 28px;
-          text-align: left;
-          width: 100%;
-          transition: all 0.2s;
-          text-transform: capitalize;
-        }
-        .mobile-link:hover { color: #f1f0f7; background: rgba(0,212,255,0.06); }
-        .mobile-resume {
-          margin: 8px 28px 4px;
-          font-family: 'Space Mono', monospace;
-          font-size: 11px;
-          font-weight: 700;
-          background: #00d4ff;
-          color: #07090f;
-          padding: 10px 18px;
-          border-radius: 6px;
-          text-decoration: none;
-          display: inline-block;
-          text-align: center;
-        }
-        @media (max-width: 900px) {
-          .nav-links-desktop { display: none; }
-          .nav-resume-desktop { display: none; }
-          .hamburger { display: flex; }
-        }
-        @media (max-width: 640px) {
-          .mobile-menu { top: 60px; }
-          .mobile-link { padding: 12px 20px; }
-          .mobile-resume { margin: 8px 20px 4px; }
-        }
-      `}</style>
-
-      <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        padding: '12px 0',
-        background: scrolled ? 'rgba(5,5,10,0.82)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-        transition: 'all 0.3s',
-      }}>
-        <div style={{
-          maxWidth: 1000, margin: '0 auto', padding: '0 20px',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        }}>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled || menuOpen
+            ? 'border-b border-rule bg-paper/85 backdrop-blur-md'
+            : 'border-b border-transparent'
+        }`}
+      >
+        <div className="u-shell flex h-[60px] items-center justify-between gap-8">
           <button
-            onClick={() => scrollTo('hero')}
-            style={{
-              fontFamily: 'Space Mono, monospace',
-              fontSize: 13,
-              color: '#f1f0f7',
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              cursor: 'pointer',
-            }}
+            onClick={() => go('top')}
+            className="u-label !text-ink whitespace-nowrap !tracking-[0.14em] cursor-pointer"
           >
-            maisha_rahman<span style={{ color: '#00d4ff' }}>.</span>dev
+            Maisha Rahman
           </button>
 
-          {/* Desktop nav */}
-          <div className="nav-links-desktop">
-            {navLinks.map(id => (
+          <nav className="hidden items-center gap-7 md:flex">
+            {NAV.map((item) => (
               <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  fontFamily: 'Space Mono, monospace', fontSize: 13, color: '#6b6a88',
-                  padding: '6px 14px', borderRadius: 100, transition: 'all 0.2s',
-                  textTransform: 'capitalize',
-                }}
-                onMouseEnter={e => {
-                  (e.target as HTMLElement).style.color = '#f1f0f7'
-                  ;(e.target as HTMLElement).style.background = 'rgba(0,212,255,0.08)'
-                }}
-                onMouseLeave={e => {
-                  (e.target as HTMLElement).style.color = '#6b6a88'
-                  ;(e.target as HTMLElement).style.background = 'transparent'
-                }}
+                key={item.id}
+                onClick={() => go(item.id)}
+                className={`u-label cursor-pointer transition-colors duration-200 hover:!text-ink ${
+                  active === item.id ? '!text-ink' : ''
+                }`}
               >
-                {id}
+                {item.label}
               </button>
             ))}
-          </div>
+          </nav>
 
+          <div className="flex items-center gap-5">
+            <a
+              href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="u-label !text-ink hidden items-center gap-2 border border-ink px-4 py-2 transition-colors duration-200 hover:bg-ink hover:!text-paper sm:inline-flex"
+            >
+              Résumé
+            </a>
+
+            <button
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              className="flex h-6 w-6 cursor-pointer flex-col items-end justify-center gap-[5px] md:hidden"
+            >
+              <span
+                className={`block h-px bg-ink transition-all duration-300 ${
+                  menuOpen ? 'w-5 translate-y-[3px] rotate-45' : 'w-5'
+                }`}
+              />
+              <span
+                className={`block h-px bg-ink transition-all duration-300 ${
+                  menuOpen ? 'w-5 -translate-y-[3px] -rotate-45' : 'w-3.5'
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile sheet */}
+      <div
+        /* `invisible` (not just opacity-0) is what keeps the closed sheet out of
+           the tab order and the accessibility tree. Transitioning visibility
+           alongside opacity preserves the fade on the way out. */
+        className={`fixed inset-0 z-40 bg-paper transition-[opacity,visibility] duration-300 md:hidden ${
+          menuOpen ? 'visible opacity-100' : 'invisible opacity-0'
+        }`}
+      >
+        <div className="u-shell flex h-full flex-col justify-center pb-16">
+          {NAV.map((item, i) => (
+            <button
+              key={item.id}
+              onClick={() => go(item.id)}
+              className="group flex items-baseline gap-5 border-b border-rule py-5 text-left"
+            >
+              <span className="u-label u-mono">{String(i + 1).padStart(2, '0')}</span>
+              <span className="text-[1.75rem] font-medium tracking-[-0.03em]">{item.label}</span>
+            </button>
+          ))}
           <a
-            className="nav-resume-desktop"
             href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
             target="_blank"
-            style={{
-              fontFamily: 'Space Mono, monospace', fontSize: 11, fontWeight: 700,
-              background: '#00d4ff', color: '#07090f',
-              padding: '8px 18px', borderRadius: 6, textDecoration: 'none',
-              transition: 'all 0.2s',
-            }}
+            rel="noreferrer"
+            className="u-label !text-paper mt-10 inline-flex justify-center rounded-lg bg-ink px-5 py-4"
           >
-            Resume
+            Download Résumé
           </a>
-
-          {/* Hamburger */}
-          <button className="hamburger" onClick={() => setMenuOpen(p => !p)} aria-label="Toggle menu">
-            <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
-            <span style={{ opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
-          </button>
         </div>
-      </nav>
-
-      {/* Mobile dropdown */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        {navLinks.map(id => (
-          <button key={id} className="mobile-link" onClick={() => scrollTo(id)}>{id}</button>
-        ))}
-        <a className="mobile-resume" href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
       </div>
     </>
   )

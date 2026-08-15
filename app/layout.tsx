@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
+import { Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+
+/* Self-hosted at build time, so there is no render-blocking request to a third
+   party before the page can paint its type. */
+const interTight = Inter_Tight({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-inter-tight',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+})
 
 // Update this if you move to a custom domain — every OG/canonical URL derives from it.
 const SITE_URL = 'https://maisha-portfolio-nine.vercel.app'
 
-const title = 'Maisha Rahman — AI Engineer & Fullstack Developer'
+const title = 'Maisha Rahman — Software Engineer'
 const description =
   'Fullstack and AI engineer in Dhaka, Bangladesh. In-house developer for Armani Group, IEEE ICCIT 2025 published researcher, building production CRM, e-commerce, and LLM systems.'
 
@@ -70,14 +87,15 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    /* The `js` class arms the scroll-reveal styles. It is rendered on the server
+       rather than added by an inline script so that the markup React hydrates
+       matches exactly; the <noscript> block below is what covers the
+       scripting-disabled case. */
+    <html lang="en" className={`js ${interTight.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
-        />
+        <noscript>
+          <style>{`.js .u-reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

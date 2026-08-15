@@ -1,77 +1,427 @@
-/* Fonts are loaded via <link rel="preconnect"> + stylesheet in app/layout.tsx.
-   A CSS @import here would serialise the request behind this file and block render. */
 @import "tailwindcss";
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-html, body { max-width: 100%; overflow-x: hidden; }
+/* ---------------------------------------------------------------------------
+   Design tokens.
+   Achromatic by design: hierarchy comes from scale, weight, and hairline rules,
+   never from hue. The only "colour" on the page is the black 3D object.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* -------------------------------------------------------------------------
+     Palette — achromatic.
+     The page sits on a soft off-white rather than pure #fff, and text is a soft
+     black rather than #000: dropping both ends off the extremes cuts glare and
+     is what makes a long read comfortable. Cards use true white so they lift
+     off the page without needing a heavy shadow to do the work.
+     ------------------------------------------------------------------------- */
+  --color-paper: #f7f7f5;
+  --color-paper-2: #efefec;
+  --color-card: #ffffff;
 
-body {
-  background: #07090f;
-  color: #e8eaf0;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  --color-ink: #17171a;
+  --color-ink-2: #56564f;
+  /* Carries 11px uppercase labels, so it must clear WCAG AA at small sizes:
+     5.0:1 on paper, 4.7:1 on paper-2. */
+  --color-ink-3: #6b6b66;
+  /* Decorative only — aria-hidden separators. Never used for text that matters. */
+  --color-ink-4: #adada7;
+
+  --color-rule: #e2e2dd;
+  --color-rule-strong: #cdcdc7;
+
+  /* Families come from next/font (see app/layout.tsx), which sets these
+     variables on <html>. */
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-}
-
-.orb1 {
-  position: fixed; width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 65%);
-  top: -200px; right: -150px; pointer-events: none; z-index: 0;
-  animation: orbFloat1 8s ease-in-out infinite;
-}
-
-.orb2 {
-  position: fixed; width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(108,99,255,0.06) 0%, transparent 65%);
-  bottom: -100px; left: -150px; pointer-events: none; z-index: 0;
-  animation: orbFloat2 10s ease-in-out infinite;
-}
-
-@keyframes orbFloat1 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-30px, 40px); }
-}
-
-@keyframes orbFloat2 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(40px, -30px); }
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .grid-bg {
-    background-size: 44px 44px;
+/* ---------------------------------------------------------------------------
+   Base.
+   Everything here MUST stay inside `@layer base`. Tailwind v4 emits its
+   utilities into cascade layers, and unlayered CSS beats layered CSS no matter
+   the specificity — so an unlayered universal reset that zeroes padding
+   silently defeats every padding utility in the project.
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Fixed masthead is 61px; keep anchored sections clear of it. */
+    scroll-padding-top: 61px;
+    -webkit-text-size-adjust: 100%;
   }
 
-  .orb1 {
-    width: 420px;
-    height: 420px;
-    top: -140px;
-    right: -180px;
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
-  .orb2 {
-    width: 320px;
-    height: 320px;
-    bottom: -80px;
-    left: -120px;
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv05' 1, 'ss03' 1;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* Visible focus for keyboard users only — the design is quiet enough that the
+     default ring would be the loudest thing on the page if it fired on click. */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Primitives.
+   In `@layer components` so that Tailwind utilities applied alongside them win
+   — `class="u-prose text-[1.1875rem]"` resolves to the utility, as expected.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .u-shell {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 40px;
+  }
+
+  .u-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .u-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: 'zero' 1;
+  }
+
+  /* Display / heading treatments. Optical tracking tightens as size grows. */
+  .u-display {
+    font-size: clamp(3.25rem, 8.5vw, 7.5rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+  }
+
+  .u-h2 {
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .u-h3 {
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  /* 1.75 leading and a soft-black `strong` — long paragraphs are the bulk of
+     this page, so the body copy is tuned for sustained reading rather than for
+     looking tight in a screenshot. */
+  .u-prose {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-ink-2);
+    text-wrap: pretty;
+  }
+
+  .u-prose strong {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  /* Underline that retracts from the left on hover — the only decorative motion
+     in the system, and it only ever signals "this is a link". */
+  .u-link {
+    color: var(--color-ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--color-ink), var(--color-ink));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: background-size 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding-bottom: 1px;
+  }
+
+  .u-link:hover {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+
+  /* Reveal-on-scroll. Opacity + a short lift only; nothing scales or blurs.
+     Gated behind `.js` (rendered on <html> in app/layout.tsx) so the page is
+     legible without scripting — see the <noscript> override there. */
+  .js .u-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  .js .u-reveal.is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /* Above-the-fold entrance. CSS-only, so the hero never waits on JS to paint. */
+  .u-rise {
+    animation: riseIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  /* -------------------------------------------------------------------------
+     Card.
+     Pointer-driven 3D. Amplitude is deliberately small (max 5deg) and the
+     shadow shifts with the tilt, which is what separates a solid object
+     catching the light from a box that wobbles on hover.
+     ------------------------------------------------------------------------- */
+  .card3d {
+    perspective: 1000px;
+    perspective-origin: center;
+  }
+
+  .card3d-inner {
+    position: relative;
+    height: 100%;
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    background: var(--color-card);
+    padding: 20px;
+    transform: rotateX(var(--card-rx, 0deg)) rotateY(var(--card-ry, 0deg));
+    transform-style: preserve-3d;
+    box-shadow:
+      0 1px 2px rgb(23 23 26 / 0.04),
+      0 var(--card-sy, 2px) var(--card-blur, 8px) calc(var(--card-blur, 8px) / -3)
+        rgb(23 23 26 / 0.06);
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 0.3s ease;
+    will-change: transform;
+  }
+
+  @media (min-width: 640px) {
+    .card3d-inner {
+      padding: 24px;
+    }
+  }
+
+  .card3d:hover .card3d-inner {
+    border-color: var(--color-rule-strong);
+  }
+
+  /* Specular sheen tracking the pointer. Sits above the card but below nothing
+     interactive, so it never eats clicks. */
+  .card3d-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      420px circle at var(--card-mx, 50%) var(--card-my, 0%),
+      rgb(255 255 255 / 0.9),
+      rgb(255 255 255 / 0) 45%
+    );
+    mix-blend-mode: overlay;
+  }
+
+  .card3d:hover .card3d-sheen {
+    opacity: 1;
+  }
+
+  /* Lifts content off the card face so the parallax reads as real depth. */
+  .card3d-layer {
+    transform: translateZ(26px);
+    transform-style: preserve-3d;
+  }
+
+  /* -------------------------------------------------------------------------
+     Cube.
+     A 3x3 cube in CSS 3D transforms — six faces of nine tiles. Replaces a
+     ~1MB WebGL scene with a few kilobytes of transforms, and lets the greys be
+     tuned against the paper so the object never washes out on white.
+     ------------------------------------------------------------------------- */
+  .cube-scene {
+    position: relative;
+    display: grid;
+    place-items: center;
+    perspective: 1100px;
+  }
+
+  .cube-tilt {
+    transform: rotateX(var(--rx, -20deg)) rotateY(var(--ry, -28deg));
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
+
+  .cube-spin {
+    position: relative;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform-style: preserve-3d;
+    animation: cubeSway 20s ease-in-out infinite;
+  }
+
+  .cube-face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: calc(var(--cube-size) / 34);
+    padding: calc(var(--cube-size) / 34);
+    background: #0d0d10;
+    /* Square, deliberately. Rounding the faces leaves notches at the twelve
+       edges where the planes meet, and you see straight through the hollow
+       interior. The tiles carry the radius instead. */
+    border-radius: 0;
+    backface-visibility: hidden;
+  }
+
+  /* Each face gets a hue plus a shading amount, so the solid reads as lit from
+     the upper left rather than as six flat swatches. */
+  /* Monochrome faces. Swapping these six --tile values for hues is all it takes
+     to make the cube a full-colour Rubik's cube again. */
+  .cube-face-front  { transform: translateZ(calc(var(--cube-size) / 2)); --tile: #3a3a40; --dark: 6%; }
+  .cube-face-back   { transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2)); --tile: #34343a; --dark: 20%; }
+  .cube-face-right  { transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2)); --tile: #2c2c31; --dark: 26%; }
+  .cube-face-left   { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); --tile: #3f3f45; --dark: 14%; }
+  .cube-face-top    { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); --tile: #6e6e77; --dark: 0%; }
+  .cube-face-bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); --tile: #26262a; --dark: 36%; }
+
+  .cube-tile {
+    border-radius: calc(var(--cube-size) / 30);
+    background-color: color-mix(in oklab, var(--tile), #000 var(--dark));
+    background-image: linear-gradient(
+      152deg,
+      rgb(255 255 255 / 0.34) 0%,
+      rgb(255 255 255 / 0.05) 42%,
+      rgb(0 0 0 / 0.16) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.35),
+      inset 0 -1px 0 rgb(0 0 0 / 0.4);
+  }
+
+  .cube-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    width: 62%;
+    height: 7%;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgb(10 10 10 / 0.26), transparent 68%);
+    filter: blur(6px);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Sways within a three-quarter view instead of rotating a full turn. A cube
+   built from six flat planes only reads as a solid while two or three faces are
+   visible; a full 360 passes through face-on and edge-on, where it flattens
+   into a slab. Combined with the -28deg base yaw this stays between -44 and
+   -12 degrees, so three faces are always in view. */
+@keyframes cubeSway {
+  0%,
+  100% {
+    transform: rotateY(-16deg);
+  }
+  50% {
+    transform: rotateY(16deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .u-shell {
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .u-shell {
+    padding-inline: 18px;
+  }
+
+  /* Tighten the display type's leading and tracking at phone sizes — the
+     desktop settings are optically too loose once the line count doubles. */
+  .u-display {
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+  }
+
+  .u-h2 {
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .u-prose {
+    font-size: 1rem;
+  }
+
+  /* Full-width stacked actions beat two cramped side-by-side buttons, and the
+     min-height guarantees a comfortable tap target. */
+  .u-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .u-actions > a {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .u-reveal,
+  .js .u-reveal.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

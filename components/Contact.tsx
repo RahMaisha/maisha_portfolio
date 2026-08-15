@@ -1,401 +1,203 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
+import Reveal from './Reveal'
 
-const contactInfo = [
-  { icon: '@', label: 'Email', value: 'maisharahman01x@gmail.com', href: 'mailto:maisharahman01x@gmail.com' },
-  { icon: 'O', label: 'Location', value: 'Dhaka, Bangladesh', href: '' },
+const DIRECT = [
+  { label: 'Email', value: 'maisharahman01x@gmail.com', href: 'mailto:maisharahman01x@gmail.com' },
+  { label: 'GitHub', value: 'github.com/RahMaisha', href: 'https://github.com/RahMaisha' },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/maisha-rahman-01x',
+    href: 'https://linkedin.com/in/maisha-rahman-01x',
+  },
+  { label: 'Location', value: 'Dhaka, Bangladesh', href: '' },
 ]
 
-const socialLinks = [
-  { label: 'GitHub', short: 'GH', href: 'https://github.com/RahMaisha' },
-  { label: 'LinkedIn', short: 'IN', href: 'https://linkedin.com/in/maisha-rahman-01x' },
-  { label: 'Email', short: 'EM', href: 'mailto:maisharahman01x@gmail.com' },
-]
+const FIELD =
+  'w-full border-0 border-b border-rule-strong bg-transparent pb-3 pt-2 text-[1rem] text-ink outline-none transition-colors duration-200 placeholder:text-ink-3 focus:border-ink'
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitState, setSubmitState] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
-    type: 'idle',
-    message: '',
-  })
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            ;(entry.target as HTMLElement).style.animation = 'fadeUp .6s ease forwards'
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    document.querySelectorAll('.ct-reveal').forEach((element) => {
-      ;(element as HTMLElement).style.opacity = '0'
-      observer.observe(element)
-    })
-
-    return () => observer.disconnect()
-  }, [])
+  const [submitState, setSubmitState] = useState<{
+    type: 'idle' | 'success' | 'error'
+    message: string
+  }>({ type: 'idle', message: '' })
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault()
-  setIsSubmitting(true)
+    event.preventDefault()
+    setIsSubmitting(true)
 
-  const form = event.currentTarget
-  const data = new FormData(form)
-  data.append('access_key', 'f60bff5d-e782-453c-8280-069fde48f541') // paste your key
+    const form = event.currentTarget
+    const data = new FormData(form)
+    data.append('access_key', 'f60bff5d-e782-453c-8280-069fde48f541')
 
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: data,
-    })
-    const json = await res.json()
-    if (json.success) {
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      const json = await res.json()
+      if (!json.success) throw new Error('Failed')
       form.reset()
-      setSubmitState({ type: 'success', message: 'Message sent! I\'ll get back to you soon.' })
-    } else {
-      throw new Error('Failed')
+      setSubmitState({ type: 'success', message: 'Message sent. I’ll get back to you soon.' })
+    } catch {
+      setSubmitState({
+        type: 'error',
+        message: 'Something went wrong. Email me directly at maisharahman01x@gmail.com',
+      })
+    } finally {
+      setIsSubmitting(false)
     }
-  } catch {
-    setSubmitState({ type: 'error', message: 'Something went wrong. Email me directly at maisharahman01x@gmail.com' })
-  } finally {
-    setIsSubmitting(false)
   }
-}
 
   return (
-    <>
-      <style>{`
-        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .ct-wrap {
-          display:grid;
-          grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.25fr);
-          gap: 36px;
-          align-items: start;
-        }
-        .ct-panel {
-          background: linear-gradient(180deg, rgba(13,17,23,0.96), rgba(7,9,15,0.98));
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 20px;
-          padding: 34px;
-          box-shadow: 0 18px 44px rgba(0,0,0,0.22);
-        }
-        .ct-left {
-          min-height: 100%;
-        }
-        .ct-heading {
-          font-size: 18px;
-          font-weight: 700;
-          color: #fff1eb;
-          margin-bottom: 12px;
-          letter-spacing: -0.02em;
-        }
-        .ct-copy {
-          font-size: 14px;
-          line-height: 1.8;
-          color: #8892a4;
-          max-width: 32ch;
-          margin-bottom: 28px;
-        }
-        .ct-item {
-          display:flex;
-          align-items:flex-start;
-          gap:14px;
-          margin-bottom:18px;
-        }
-        .ct-icon {
-          width:42px;
-          height:42px;
-          border-radius:12px;
-          border:1px solid rgba(0,212,255,0.28);
-          background: rgba(0,212,255,0.08);
-          color:#00d4ff;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-family:'Fira Code', monospace;
-          font-size:14px;
-          flex-shrink:0;
-        }
-        .ct-label {
-          font-family:'Fira Code', monospace;
-          font-size:11px;
-          letter-spacing:.12em;
-          text-transform:uppercase;
-          color:#4a5568;
-          margin-bottom:4px;
-        }
-        .ct-value, .ct-link {
-          font-size:15px;
-          line-height:1.6;
-          color:#f6ebe8;
-          text-decoration:none;
-        }
-        .ct-link:hover {
-          color:#00d4ff;
-        }
-        .ct-divider {
-          height:1px;
-          background: rgba(255,255,255,0.08);
-          margin: 28px 0 24px;
-        }
-        .ct-social-title {
-          font-family:'Fira Code', monospace;
-          font-size:11px;
-          letter-spacing:.16em;
-          text-transform:uppercase;
-          color:#4a5568;
-          margin-bottom:14px;
-        }
-        .ct-social-row {
-          display:flex;
-          flex-wrap:wrap;
-          gap:10px;
-        }
-        .ct-social {
-          width:44px;
-          height:44px;
-          border-radius:12px;
-          border:1px solid rgba(255,255,255,0.1);
-          background: rgba(255,255,255,0.03);
-          color:#d6c2be;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          text-decoration:none;
-          font-family:'Fira Code', monospace;
-          font-size:12px;
-          transition: all .25s ease;
-        }
-        .ct-social:hover {
-          border-color: rgba(0,212,255,0.28);
-          color: #e8eaf0;
-          background: rgba(0,212,255,0.08);
-          transform: translateY(-2px);
-        }
-        .ct-form-title {
-          font-size: 18px;
-          font-weight: 700;
-          color: #fff1eb;
-          margin-bottom: 24px;
-          letter-spacing: -0.02em;
-        }
-        .ct-form-grid {
-          display:grid;
-          grid-template-columns:1fr 1fr;
-          gap:14px;
-          margin-bottom:14px;
-        }
-        .ct-field-wrap {
-          display:flex;
-          flex-direction:column;
-          gap:8px;
-        }
-        .ct-field-wrap.full {
-          grid-column:1 / -1;
-        }
-        .ct-field-label {
-          font-family:'Fira Code', monospace;
-          font-size:11px;
-          letter-spacing:.12em;
-          text-transform:uppercase;
-          color:#8892a4;
-        }
-        .ct-input, .ct-textarea {
-          width:100%;
-          border-radius:14px;
-          border:1px solid rgba(255,255,255,0.1);
-          background: rgba(255,255,255,0.04);
-          color:#f6ebe8;
-          padding:14px 16px;
-          font-size:14px;
-          outline:none;
-          transition: all .2s ease;
-        }
-        .ct-input::placeholder, .ct-textarea::placeholder {
-          color:#7e6b6f;
-        }
-        .ct-input:focus, .ct-textarea:focus {
-          border-color: rgba(0,212,255,0.4);
-          box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
-        }
-        .ct-textarea {
-          min-height: 140px;
-          resize: vertical;
-        }
-        .ct-submit {
-          margin-top: 16px;
-          width: 100%;
-          border: none;
-          border-radius: 14px;
-          background: linear-gradient(90deg, #00d4ff, #0ea5e9);
-          color: #07090f;
-          padding: 15px 18px;
-          font-size: 16px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-        }
-        .ct-submit:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 14px 30px rgba(0,212,255,0.24);
-          filter: brightness(1.03);
-        }
-        .ct-note {
-          margin-top: 14px;
-          font-size: 12px;
-          color: #8892a4;
-          line-height: 1.6;
-        }
-        .ct-status {
-          margin-top: 14px;
-          border-radius: 12px;
-          padding: 12px 14px;
-          font-size: 13px;
-          line-height: 1.6;
-        }
-        .ct-status.success {
-          border: 1px solid rgba(34,197,94,0.24);
-          background: rgba(34,197,94,0.08);
-          color: #d8f7df;
-        }
-        .ct-status.error {
-          border: 1px solid rgba(239,68,68,0.24);
-          background: rgba(239,68,68,0.08);
-          color: #ffd7d7;
-        }
-        .ct-inner { padding: 0 48px 80px; }
-        @media (max-width: 1024px) {
-          .ct-wrap {
-            grid-template-columns: 1fr;
-          }
-          .ct-inner { padding: 0 32px 72px !important; }
-        }
-        @media (max-width: 768px) {
-          .ct-inner { padding: 0 20px 60px !important; }
-          .ct-panel { padding: 22px; border-radius: 18px; }
-          .ct-form-grid { grid-template-columns: 1fr; }
-          .ct-section { padding: 60px 0 !important; }
-          .ct-title { font-size: 28px !important; }
-        }
-      `}</style>
-
-      <section
-        id="contact"
-        className="ct-section"
-        style={{
-          padding: '80px 0',
-          borderTop: '1px solid rgba(255,255,255,0.05)',
-          background: 'radial-gradient(circle at top left, rgba(0,212,255,0.08), transparent 30%)',
-        }}
-      >
-        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-          <div className="ct-inner" style={{ padding: '0 48px 80px' }}>
-            <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>08. contact</div>
-            <h2 className="ct-title" style={{ fontSize: 'clamp(28px,3vw,36px)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 12 }}>
-              Let&apos;s <span style={{ color: '#00d4ff' }}>Connect</span>
-            </h2>
-            <p style={{ fontSize: 15, color: '#8892a4', maxWidth: 620, fontWeight: 300, lineHeight: 1.8, marginBottom: 42 }}>
-              Open to AI engineering, software engineering, and fullstack opportunities. Reach out directly or send a message through the form.
+    <section id="contact" className="border-t border-rule bg-paper pt-[clamp(72px,10vw,132px)]">
+      <div className="u-shell">
+        <Reveal>
+          <div className="mb-[clamp(40px,5vw,64px)]">
+            <div className="mb-6 flex items-baseline gap-4">
+              <span className="u-label u-mono">08</span>
+              <span className="u-label">Contact</span>
+              <span aria-hidden className="h-px flex-1 translate-y-[-3px] bg-rule" />
+            </div>
+            <h2 className="u-h2 max-w-[16ch]">Let&rsquo;s talk.</h2>
+            <p className="u-prose mt-7 max-w-[54ch]">
+              Open to AI engineering, software engineering, and full-stack roles. Reach out directly,
+              or send a message here.
             </p>
+          </div>
+        </Reveal>
 
-            <div className="ct-wrap">
-              <div className="ct-panel ct-left ct-reveal">
-                <h3 className="ct-heading">Get In Touch</h3>
-                <p className="ct-copy">
-                  Reach out directly or connect with me online. I&apos;d love to hear about roles, collaborations, and interesting product ideas.
-                </p>
+        <div className="grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
+          {/* Direct */}
+          <Reveal>
+            <dl className="border-t border-ink">
+              {DIRECT.map((item) => (
+                <div key={item.label} className="border-b border-rule py-5">
+                  <dt className="u-label mb-1.5">{item.label}</dt>
+                  <dd className="text-[1rem]">
+                    {item.href ? (
+                      <a
+                        className="u-link"
+                        href={item.href}
+                        target={item.href.startsWith('mailto') ? undefined : '_blank'}
+                        rel="noreferrer"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
 
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="ct-item">
-                    <div className="ct-icon">{item.icon}</div>
-                    <div>
-                      <div className="ct-label">{item.label}</div>
-                      {item.href ? (
-                        <a className="ct-link" href={item.href}>
-                          {item.value}
-                        </a>
-                      ) : (
-                        <div className="ct-value">{item.value}</div>
-                      )}
-                    </div>
-                  </div>
-                ))}
+          {/* Form */}
+          <Reveal delay={80}>
+            <form onSubmit={handleSubmit} className="border-t border-ink pt-8">
+              {/* Web3Forms honeypot — real people never fill this in. */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                className="sr-only !absolute !h-px !w-px !overflow-hidden"
+                aria-hidden
+              />
 
-                <div className="ct-divider" />
+              <div className="grid gap-x-10 gap-y-9 sm:grid-cols-2">
+                <div>
+                  <label className="u-label mb-1 block" htmlFor="fullName">
+                    Full name
+                  </label>
+                  <input
+                    className={FIELD}
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
 
-                <div className="ct-social-title">Follow Me</div>
-                <div className="ct-social-row">
-                  {socialLinks.map((item) => (
-                    <a key={item.label} className="ct-social" href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
-                      {item.short}
-                    </a>
-                  ))}
+                <div>
+                  <label className="u-label mb-1 block" htmlFor="emailAddress">
+                    Email address
+                  </label>
+                  <input
+                    className={FIELD}
+                    id="emailAddress"
+                    name="emailAddress"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="u-label mb-1 block" htmlFor="subject">
+                    Subject
+                  </label>
+                  <input
+                    className={FIELD}
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder="What is this about?"
+                    required
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="u-label mb-1 block" htmlFor="message">
+                    Message
+                  </label>
+                  <textarea
+                    className={`${FIELD} min-h-[120px] resize-y`}
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about the role, project, or collaboration."
+                    required
+                  />
                 </div>
               </div>
 
-              <div className="ct-panel ct-reveal">
-                <h3 className="ct-form-title">Send Direct Message</h3>
-                <form onSubmit={handleSubmit}>
-                  <div className="ct-form-grid">
-                    <div className="ct-field-wrap">
-                      <label className="ct-field-label" htmlFor="fullName">
-                        Full Name
-                      </label>
-                      <input className="ct-input" id="fullName" name="fullName" type="text" placeholder="John Doe" required />
-                    </div>
+              <div className="mt-10 flex flex-wrap items-center gap-6">
+                <button
+                  className="u-label !text-paper inline-flex cursor-pointer items-center gap-3 rounded-lg bg-ink px-7 py-4 transition-opacity duration-200 hover:opacity-80 disabled:opacity-50"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending…' : 'Send message'}
+                  {!isSubmitting ? <span aria-hidden>&rarr;</span> : null}
+                </button>
 
-                    <div className="ct-field-wrap">
-                      <label className="ct-field-label" htmlFor="emailAddress">
-                        Email Address
-                      </label>
-                      <input className="ct-input" id="emailAddress" name="emailAddress" type="email" placeholder="you@example.com" required />
-                    </div>
-
-                    <div className="ct-field-wrap full">
-                      <label className="ct-field-label" htmlFor="subject">
-                        Subject
-                      </label>
-                      <input className="ct-input" id="subject" name="subject" type="text" placeholder="What's this about?" required />
-                    </div>
-
-                    <div className="ct-field-wrap full">
-                      <label className="ct-field-label" htmlFor="message">
-                        Message
-                      </label>
-                      <textarea className="ct-textarea" id="message" name="message" placeholder="Tell me about the role, project, or collaboration..." required />
-                    </div>
-                  </div>
-
-                  <button className="ct-submit" type="submit" disabled={isSubmitting} style={{ opacity: isSubmitting ? 0.8 : 1 }}>
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </button>
-                </form>
                 {submitState.type !== 'idle' ? (
-                  <div className={`ct-status ${submitState.type}`}>{submitState.message}</div>
+                  <p
+                    role="status"
+                    className={`text-[0.875rem] ${
+                      submitState.type === 'success' ? 'text-ink' : 'text-ink-2'
+                    }`}
+                  >
+                    {submitState.message}
+                  </p>
                 ) : null}
-                <p className="ct-note">
-                  Messages are sent to
-                  {' '}
-                  <a className="ct-link" href="mailto:maisharahman01x@gmail.com">
-                    maisharahman01x@gmail.com
-                  </a>
-                  . Submissions are handled by Web3Forms — your address is only used to reply.
-                </p>
               </div>
-            </div>
 
-            <div style={{ textAlign: 'center', marginTop: 48, fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#4a5568' }}>
-              © {new Date().getFullYear()} Maisha Rahman | Built with Next.js | Deployed on Vercel
-            </div>
-          </div>
+              <p className="mt-8 max-w-[56ch] text-[0.8125rem] leading-relaxed text-ink-3">
+                Messages are delivered to maisharahman01x@gmail.com. Submissions are handled by
+                Web3Forms; your address is only used to reply.
+              </p>
+            </form>
+          </Reveal>
         </div>
-      </section>
-    </>
+
+        {/* Footer */}
+        <footer className="mt-[clamp(72px,9vw,120px)] flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-rule py-8">
+          <p className="u-label">© {new Date().getFullYear()} Maisha Rahman</p>
+          <p className="u-label">Next.js · Vercel · Spline</p>
+        </footer>
+      </div>
+    </section>
   )
 }

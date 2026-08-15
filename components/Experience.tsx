@@ -1,9 +1,7 @@
-'use client'
+import Reveal from './Reveal'
+import Section from './Section'
 
-type MonthPoint = {
-  year: number
-  monthIndex: number
-}
+type MonthPoint = { year: number; monthIndex: number }
 
 type Role = {
   company: string
@@ -30,7 +28,20 @@ const roles: Role[] = [
     title: 'Junior Software Developer',
     scope: 'In-house developer for Armani Group',
     start: { year: 2026, monthIndex: 5 },
-    tags: ['Laravel', 'Angular', 'Node.js', 'MySQL', 'PostgreSQL', 'REST APIs', 'System Design', 'WhatsApp API', 'Chatbot', 'Unit Testing', 'Cloudflare', 'Firebase'],
+    tags: [
+      'Laravel',
+      'Angular',
+      'Node.js',
+      'MySQL',
+      'PostgreSQL',
+      'REST APIs',
+      'System Design',
+      'WhatsApp API',
+      'Chatbot',
+      'Unit Testing',
+      'Cloudflare',
+      'Firebase',
+    ],
     bullets: [
       {
         bold: 'Sole in-house developer for Armani Group',
@@ -128,19 +139,23 @@ const roles: Role[] = [
     projects: [
       {
         name: 'Social Community Platform',
-        summary: 'Contributed most of the frontend and backend implementation for the live platform using Laravel, Angular, and MySQL.',
+        summary:
+          'Contributed most of the frontend and backend implementation for the live platform using Laravel, Angular, and MySQL.',
       },
       {
         name: 'Sports Marketplace',
-        summary: 'Delivered major full-stack development across the live product, working closely with design, QA, and product direction.',
+        summary:
+          'Delivered major full-stack development across the live product, working closely with design, QA, and product direction.',
       },
       {
         name: 'Chatbot SaaS',
-        summary: 'Built a chatbot widget that can be embedded into any website, plus a private dashboard to manage chatbot flows, support internal operations, and power live client integrations.',
+        summary:
+          'Built a chatbot widget that can be embedded into any website, plus a private dashboard to manage chatbot flows, support internal operations, and power live client integrations.',
       },
       {
         name: 'News Platform',
-        summary: 'Contributed frontend implementation and architecture input on scalability, caching, and database design for a high-traffic news site ahead of launch.',
+        summary:
+          'Contributed frontend implementation and architecture input on scalability, caching, and database design for a high-traffic news site ahead of launch.',
       },
     ],
   },
@@ -152,162 +167,110 @@ function formatMonth(point: MonthPoint) {
   )
 }
 
-function getRangeLabel(start: MonthPoint, end?: MonthPoint) {
+function getDuration(start: MonthPoint, end?: MonthPoint) {
   const now = new Date()
   const last = end ?? { year: now.getFullYear(), monthIndex: now.getMonth() }
-  const totalMonths = (last.year - start.year) * 12 + (last.monthIndex - start.monthIndex) + 1
-  const monthLabel = totalMonths === 1 ? '1 mo' : `${totalMonths} mos`
-
-  return `${formatMonth(start)} - ${end ? formatMonth(end) : 'Present'} | ${monthLabel}`
+  const months = (last.year - start.year) * 12 + (last.monthIndex - start.monthIndex) + 1
+  return months === 1 ? '1 mo' : `${months} mos`
 }
 
 export default function Experience() {
   return (
-    <>
-      <style>{`
-        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .xp-stack { display:flex; flex-direction:column; gap:20px; }
-        .xp-card {
-          background:#0d1117;
-          border:1px solid rgba(255,255,255,0.06);
-          border-radius:16px;
-          padding:36px;
-          display:grid;
-          grid-template-columns:220px 1fr;
-          gap:48px;
-        }
-        .xp-card.is-current { border-color:rgba(0,212,255,0.18); }
-        .xp-bullet {
-          display:flex;gap:12px;align-items:flex-start;
-          padding:12px 14px;background:#07090f;
-          border:1px solid rgba(255,255,255,0.05);
-          border-radius:8px;margin-bottom:10px;
-        }
-        .xp-bullet:hover { border-color:rgba(0,212,255,0.15); }
-        .xp-bdot { width:5px;height:5px;border-radius:50%;background:#00d4ff;flex-shrink:0;margin-top:9px; }
-        .xp-btxt { font-size:13px;color:#8892a4;line-height:1.65; }
-        .xp-projects {
-          margin-top:24px;
-          display:grid;
-          grid-template-columns:repeat(3, minmax(0, 1fr));
-          gap:12px;
-        }
-        .xp-project {
-          padding:14px;
-          border-radius:10px;
-          background:rgba(255,255,255,0.02);
-          border:1px solid rgba(255,255,255,0.05);
-        }
-        .xp-project:hover { border-color:rgba(0,212,255,0.18); }
-        @media (max-width: 1024px) {
-          .xp-card {
-            grid-template-columns: 1fr;
-            gap: 28px;
-          }
-        }
-        @media (max-width: 900px) {
-          .xp-projects { grid-template-columns:1fr; }
-        }
-        @media (max-width: 768px) {
-          .xp-card {
-            gap: 24px;
-            padding: 20px;
-          }
-          .xp-inner { padding: 0 20px !important; }
-          .xp-title { font-size: 28px !important; }
-        }
-      `}</style>
+    <Section
+      id="experience"
+      index="02"
+      label="Experience"
+      title="Two roles, both shipping to production."
+      tone="paper-2"
+    >
+      <div className="space-y-[clamp(56px,7vw,88px)]">
+        {roles.map((role) => {
+          const isCurrent = !role.end
 
-      <section id="experience" style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative', zIndex: 1 }}>
-        <div className="xp-inner" style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
-          <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#00d4ff', letterSpacing: '0.15em', marginBottom: 6 }}>03. experience</div>
-          <h2 className="xp-title" style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 40 }}>
-            Work <span style={{ color: '#00d4ff' }}>History</span>
-          </h2>
-
-          <div className="xp-stack">
-            {roles.map((role) => {
-              const isCurrent = !role.end
-
-              return (
-                <div key={role.company} className={`xp-card${isCurrent ? ' is-current' : ''}`}>
-                  <div>
-                    <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#f5a623', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.18)', borderRadius: 20, padding: '4px 12px', display: 'inline-block', marginBottom: 14 }}>
-                      {getRangeLabel(role.start, role.end)}
-                    </div>
-                    <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 4 }}>
-                      {role.href ? (
-                        <a href={role.href} target="_blank" rel="noreferrer" style={{ color: '#e8eaf0', textDecoration: 'none' }}>
-                          {role.company}
-                        </a>
-                      ) : (
-                        <span style={{ color: '#e8eaf0' }}>{role.company}</span>
-                      )}
-                    </div>
-                    {role.parent ? (
-                      <div style={{ fontSize: 12, color: '#8892a4', marginBottom: 8 }}>
-                        Tech arm of <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>{role.parent}</strong>
-                      </div>
+          return (
+            <Reveal key={role.company} as="article">
+              <div className="grid gap-x-16 gap-y-8 border-t border-rule-strong pt-10 lg:grid-cols-[260px_minmax(0,1fr)]">
+                {/* Meta rail */}
+                <div className="lg:sticky lg:top-[100px] lg:self-start">
+                  <div className="u-label u-mono mb-4 flex items-center gap-2.5">
+                    {isCurrent ? (
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink" />
                     ) : null}
-                    {role.href && role.linkLabel ? (
-                      <div style={{ fontSize: 11, color: '#00d4ff', fontFamily: 'Fira Code, monospace', marginBottom: 8 }}>
-                        <a href={role.href} target="_blank" rel="noreferrer" style={{ color: '#00d4ff', textDecoration: 'none' }}>
-                          {role.linkLabel}
-                        </a>
-                      </div>
-                    ) : null}
-                    <div style={{ fontSize: 12, color: '#8892a4', fontFamily: 'Fira Code, monospace', marginBottom: 4 }}>{role.location}</div>
-                    <div style={{ fontSize: 12, color: '#4a5568', fontFamily: 'Fira Code, monospace', marginBottom: 16 }}>{role.mode}</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                      {role.tags.map((tag) => (
-                        <span key={tag} style={{ fontSize: 10, fontFamily: 'Fira Code, monospace', padding: '3px 9px', borderRadius: 4, background: 'rgba(0,212,255,0.07)', border: '1px solid rgba(0,212,255,0.18)', color: '#00d4ff' }}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {formatMonth(role.start)} — {role.end ? formatMonth(role.end) : 'Present'}
+                    <span aria-hidden className="text-ink-4">/</span>
+                    {getDuration(role.start, role.end)}
                   </div>
 
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
-                      <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em' }}>{role.title}</div>
-                      {isCurrent ? (
-                        <span style={{ fontFamily: 'Fira Code, monospace', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#22c55e', background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.25)', borderRadius: 20, padding: '3px 10px' }}>
-                          Current
-                        </span>
-                      ) : null}
-                    </div>
-                    <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 12, color: '#f5a623', marginBottom: 20 }}>{role.scope}</div>
+                  <h3 className="text-[1.75rem] font-medium leading-none tracking-[-0.03em]">
+                    {role.href ? (
+                      <a className="u-link" href={role.href} target="_blank" rel="noreferrer">
+                        {role.company}
+                      </a>
+                    ) : (
+                      role.company
+                    )}
+                  </h3>
 
-                    {role.bullets.map((bullet, index) => (
-                      <div key={index} className="xp-bullet">
-                        <div className="xp-bdot" />
-                        <div className="xp-btxt">
-                          <strong style={{ color: '#e8eaf0', fontWeight: 500 }}>{bullet.bold}</strong>
-                          {bullet.rest}
-                        </div>
-                      </div>
+                  {role.parent ? (
+                    <p className="mt-2 text-[0.9375rem] text-ink-2">
+                      Tech arm of <span className="text-ink">{role.parent}</span>
+                    </p>
+                  ) : null}
+
+                  {role.href && role.linkLabel ? (
+                    <p className="u-mono mt-2 text-[0.8125rem] text-ink-3">{role.linkLabel}</p>
+                  ) : null}
+
+                  <p className="u-label mt-5">
+                    {role.location} <span className="text-ink-4">/</span> {role.mode}
+                  </p>
+
+                  <p className="u-mono mt-5 max-w-[34ch] text-[0.75rem] leading-relaxed text-ink-3">
+                    {role.tags.join('  ·  ')}
+                  </p>
+                </div>
+
+                {/* Detail */}
+                <div>
+                  <div className="mb-8">
+                    <h4 className="u-h3">{role.title}</h4>
+                    <p className="u-label mt-2">{role.scope}</p>
+                  </div>
+
+                  <ul className="max-w-[68ch] space-y-5">
+                    {role.bullets.map((bullet) => (
+                      <li key={bullet.bold} className="u-prose text-[1rem]">
+                        <strong>{bullet.bold}</strong>
+                        {bullet.rest}
+                      </li>
                     ))}
+                  </ul>
 
-                    <div style={{ marginTop: 24 }}>
-                      <div style={{ fontFamily: 'Fira Code, monospace', fontSize: 11, color: '#00d4ff', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 12 }}>
-                        Selected work projects
-                      </div>
-                      <div className="xp-projects">
-                        {role.projects.map((project) => (
-                          <div key={project.name} className="xp-project">
-                            <div style={{ fontSize: 15, fontWeight: 700, color: '#e8eaf0', marginBottom: 8 }}>{project.name}</div>
-                            <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7, color: '#8892a4' }}>{project.summary}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="mt-12">
+                    <h5 className="u-label mb-1">Selected work</h5>
+                    <dl className="border-t border-rule">
+                      {role.projects.map((project, i) => (
+                        <div
+                          key={project.name}
+                          className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-x-4 gap-y-1 border-b border-rule py-5 sm:grid-cols-[2rem_15rem_minmax(0,1fr)]"
+                        >
+                          <dt className="u-label u-mono">{String(i + 1).padStart(2, '0')}</dt>
+                          <dd className="text-[1rem] font-medium tracking-[-0.015em]">
+                            {project.name}
+                          </dd>
+                          <dd className="col-start-2 max-w-[52ch] text-[0.875rem] leading-relaxed text-ink-2 sm:col-start-3">
+                            {project.summary}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
                   </div>
                 </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-    </>
+              </div>
+            </Reveal>
+          )
+        })}
+      </div>
+    </Section>
   )
 }
