@@ -9,7 +9,7 @@ const FOCUS = [
   },
   {
     title: 'Medical AI & computer vision',
-    body: 'IEEE-published hybrid ViT architecture for kidney segmentation, reaching 98.6% diagnostic accuracy on a self-curated dataset.',
+    body: 'IEEE-published hybrid ViT architecture for kidney segmentation, and a diagnostic platform reaching 99.89% accuracy on 10,500+ ultrasound images.',
   },
   {
     title: 'AI systems & CRM',
@@ -48,7 +48,7 @@ export default function About() {
               <div className="border-b border-rule py-4">
                 <dt className="u-label">Current</dt>
                 <dd className="mt-1.5 text-[0.9375rem] leading-snug">
-                  Junior Software Developer
+                  Jr. Software Developer
                   <span className="block text-ink-2">CellsTech · Armani Group</span>
                 </dd>
               </div>
@@ -56,7 +56,12 @@ export default function About() {
                 <dt className="u-label">Education</dt>
                 <dd className="mt-1.5 text-[0.9375rem] leading-snug">
                   B.Sc Computer Science &amp; Engineering
-                  <span className="block text-ink-2">East West University</span>
+                  <span className="block text-ink-2">
+                    East West University · 2022&ndash;2025
+                  </span>
+                  <span className="block text-ink-2">
+                    Intelligent Systems &amp; Data Science · CGPA 3.32 / 4.00
+                  </span>
                 </dd>
               </div>
               <div className="border-b border-rule py-4">

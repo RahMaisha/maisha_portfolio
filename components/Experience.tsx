@@ -25,77 +25,78 @@ const roles: Role[] = [
     parent: 'Armani Group',
     location: 'Dhaka, Bangladesh',
     mode: 'On-site',
-    title: 'Junior Software Developer',
+    title: 'Jr. Software Developer',
     scope: 'In-house developer for Armani Group',
     start: { year: 2026, monthIndex: 5 },
     tags: [
       'Laravel',
       'Angular',
-      'Node.js',
       'MySQL',
       'PostgreSQL',
+      'Node.js',
       'REST APIs',
       'System Design',
+      'SSLCommerz',
+      'bKash',
       'WhatsApp API',
-      'Chatbot',
-      'Unit Testing',
       'Cloudflare',
       'Firebase',
     ],
     bullets: [
       {
-        bold: 'Sole in-house developer for Armani Group',
-        rest: ', embedded at group headquarters and owning every stage of delivery across the group’s internal and commercial platforms — requirement analysis, system design, UI/UX, frontend, backend, unit testing, and release.',
+        bold: 'Led the full redesign and rebuild of Natunatta',
+        rest: ' end to end — running requirement analysis directly with stakeholders, doing the UI/UX, rebuilding the frontend and writing the backend from scratch. It is the group’s first fully functional e-commerce platform, now processing 150+ orders a month across 30+ products.',
       },
       {
-        bold: 'Built a full-stack guest and visitor management CRM',
-        rest: ' with multi-criteria filtering, blacklist enforcement, interview tracking, guest-category analytics, automated flagging rules, and a stakeholder dashboard for raising and approving meeting requests.',
+        bold: 'Built the admin side of that platform',
+        rest: ': bulk CSV product import, gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration and an embedded chatbot, with bKash integrated for mobile payments.',
       },
       {
-        bold: 'Shipped a live full-stack e-commerce platform',
-        rest: ' with a deep admin panel: bulk product import from CSV, dynamic gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration, and an embedded chatbot.',
+        bold: 'Designing an inventory and manufacturing ERP for commercial release',
+        rest: ' — procurement (PR/PO/GRN), bill of materials, multi-warehouse stock, multi-level approvals, VAT-compliant billing and fraud controls.',
       },
       {
-        bold: 'Assigned the redevelopment of an MSME e-commerce marketplace',
-        rest: ' originally built by a senior engineer to a scope comparable to Amazon and Daraz — upgrading and re-developing the existing system and preparing it for commercial launch.',
+        bold: 'Selected to lead the redevelopment of NAJUS MSME',
+        rest: ', a marketplace with 200+ member enterprises. Found and fixed hundreds of bugs and built the functions still missing to get it launch ready, including SSLCommerz payment integration.',
       },
       {
-        bold: 'Built a resume builder for an EdTech course platform',
-        rest: ' (NTI Learn), carrying the feature from requirement gathering through interface design to production release.',
+        bold: 'Cleared the bugs blocking release on NTI Learn',
+        rest: ', then built a resume builder tied to NAJUS.org membership, from requirements through to production. It is now onboarded and live.',
       },
       {
-        bold: 'Own deployment and release across every system I build',
-        rest: ', running regular production deploys on Cloudflare and Firebase and handling post-release support.',
+        bold: 'Built a guest and visitor management CRM',
+        rest: ' used at headquarters and at every branch company: multi-criteria filtering, blacklist enforcement, ID tracking, interview candidate tracking, analytics and a meeting-approval dashboard.',
       },
       {
-        bold: 'Drove cross-functional delivery',
-        rest: ' as the engineering point of contact for product managers, business analysts, SQA, senior engineers, design, and PR — translating business requirements into tested, shipped features.',
-      },
-      {
-        bold: 'Maintain and extend multiple pre-built company systems and web apps',
-        rest: ', working across varied stacks including Node.js and PostgreSQL to deliver feature updates, bug fixes, upgrades, and ongoing production support across the group’s websites and internal tools.',
+        bold: 'Provide ongoing support and maintenance across group systems',
+        rest: ', acting as the main point of contact for product managers, business analysts, SQA, design and PR, and handling deployment on Cloudflare and Firebase.',
       },
     ],
     projects: [
       {
+        name: 'Natunatta',
+        summary:
+          'The group’s first fully functional e-commerce platform, rebuilt end to end and now running 150+ orders a month across 30+ products.',
+      },
+      {
+        name: 'NAJUS MSME Marketplace',
+        summary:
+          'Multi-vendor marketplace serving 200+ member enterprises; led its redevelopment and took it from blocked to launch ready.',
+      },
+      {
+        name: 'Inventory & Manufacturing ERP',
+        summary:
+          'Procurement, bill of materials, multi-warehouse stock, multi-level approvals and VAT-compliant billing, built for commercial release.',
+      },
+      {
         name: 'Guest & Visitor CRM',
         summary:
-          'Internal CRM for tracking visitors end to end, with advanced filters, blacklisting, interview tracking, and a stakeholder meeting-request dashboard.',
-      },
-      {
-        name: 'E-commerce Platform',
-        summary:
-          'Live storefront and admin panel covering CSV product import, gift vouchers, order and inventory tracking, analytics, WhatsApp, and chatbot integration.',
-      },
-      {
-        name: 'MSME Marketplace',
-        summary:
-          'Amazon/Daraz-scale multi-vendor marketplace built by a senior engineer; handling its upgrade, redevelopment, and launch preparation.',
+          'Visitor tracking in use at headquarters and every branch company, with blacklisting, ID and interview tracking, and a meeting-approval dashboard.',
       },
       {
         name: 'Resume Builder (NTI Learn)',
         summary:
-          'Resume-building tool for an educational course platform, delivered from requirement analysis through UI design to production.',
+          'Resume-building tool tied to NAJUS.org membership, delivered from requirements through UI design to production.',
       },
     ],
   },
@@ -105,57 +106,62 @@ const roles: Role[] = [
     linkLabel: 'inkphase.com',
     location: 'Dhaka, Bangladesh',
     mode: 'Hybrid',
-    title: 'Software Engineer',
+    title: 'Software Developer',
     scope: 'Full-stack product delivery',
     start: { year: 2025, monthIndex: 10 },
     end: { year: 2026, monthIndex: 4 },
-    tags: ['Laravel', 'Angular', 'Next.js', 'Django', 'PostgreSQL', 'MySQL', 'Firebase', 'AI/ML'],
+    tags: [
+      'Laravel',
+      'Angular',
+      'Django',
+      'PostgreSQL',
+      'MySQL',
+      'Firebase',
+      'Vercel',
+      'cPanel',
+    ],
     bullets: [
       {
-        bold: 'Contributed to multiple production-grade applications',
-        rest: ' across SaaS, CRM, and e-commerce platforms, working on frontend systems, backend APIs, database design, and deployment workflows.',
+        bold: 'Worked across six production products',
+        rest: ', including two SaaS platforms — a contact management CRM and a multi-tenant AI chatbot service.',
       },
       {
-        bold: 'Developed a multi-tenant chatbot platform',
-        rest: ' integrating third-party LLM APIs with customer-facing web applications and internal management dashboards.',
+        bold: 'Built frontend and backend for Sporteroo',
+        rest: ', a live sports marketplace, including its chatbot integration.',
       },
       {
-        bold: 'Built a schema-driven JSON-to-XML transformation service',
-        rest: ' with nested mapping support, validation pipelines, and robust error handling using Django and PostgreSQL.',
+        bold: 'Built a JSON-to-XML transformation service',
+        rest: ' for a healthcare data client in Django and PostgreSQL.',
       },
       {
-        bold: 'Contributed to a high-traffic news platform ahead of launch',
-        rest: ', handling frontend implementation and taking part in architecture decisions around scalability, caching, and database design.',
+        bold: 'Helped design REST APIs and database schemas',
+        rest: ' across PostgreSQL, MySQL and NoSQL stores.',
       },
       {
-        bold: 'Optimized backend infrastructure for scalability',
-        rest: ' using caching strategies, load balancing, and database tuning to improve reliability under concurrent traffic.',
-      },
-      {
-        bold: 'Maintained security across all live projects',
-        rest: ' with CSRF protection, JWT hardening, input sanitisation, and rate limiting across multiple deployed applications.',
+        bold: 'Worked on deployments across Firebase, Vercel and cPanel',
+        rest: ', and on CSRF protection, JWT authentication and rate limiting.',
       },
     ],
     projects: [
       {
-        name: 'Social Community Platform',
+        name: 'Sporteroo',
         summary:
-          'Contributed most of the frontend and backend implementation for the live platform using Laravel, Angular, and MySQL.',
+          'Live sports marketplace; built frontend and backend alongside design, QA and product direction.',
       },
       {
-        name: 'Sports Marketplace',
+        name: 'Multi-tenant Chatbot SaaS',
         summary:
-          'Delivered major full-stack development across the live product, working closely with design, QA, and product direction.',
+          'Chatbot platform isolating clients by site key, with an OpenRouter LLM gateway and an embeddable framework-agnostic widget.',
       },
       {
-        name: 'Chatbot SaaS',
+        name: 'Contact Management CRM',
         summary:
-          'Built a chatbot widget that can be embedded into any website, plus a private dashboard to manage chatbot flows, support internal operations, and power live client integrations.',
+          'One of the two SaaS platforms delivered in the role, built on the shared Laravel and Angular stack.',
       },
       {
-        name: 'News Platform',
+        name: 'JSON-to-XML Service',
         summary:
-          'Contributed frontend implementation and architecture input on scalability, caching, and database design for a high-traffic news site ahead of launch.',
+          'Schema-driven transformation service for a healthcare data client, with nested mapping and validation pipelines in Django and PostgreSQL.',
       },
     ],
   },

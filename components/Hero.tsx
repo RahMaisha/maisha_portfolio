@@ -6,10 +6,13 @@ const DISCIPLINES = [
   'Computer vision research',
 ]
 
+/* Every figure here is traceable to resume/Maisha_Rahman_Resume.tex. Keep them
+   in step — a portfolio that contradicts its own résumé is worse than a vague
+   one. */
 const FACTS = [
   { value: 'IEEE ICCIT 2025', label: 'Published — hybrid ViT' },
-  { value: 'Armani Group', label: 'Sole in-house developer' },
-  { value: '7 platforms', label: 'Shipped to production' },
+  { value: '150+ orders / mo', label: 'Natunatta, built end to end' },
+  { value: '200+ enterprises', label: 'NAJUS MSME, redevelopment lead' },
 ]
 
 /**

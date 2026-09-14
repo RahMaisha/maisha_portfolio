@@ -8,6 +8,7 @@ type HackathonProject = {
   badge: string
   date?: string
   description: string
+  href?: string
   contribution?: string
   stack?: string[]
   imagePath: string
@@ -16,14 +17,15 @@ type HackathonProject = {
 
 const hackathonProjects: HackathonProject[] = [
   {
-    name: 'Cloud Camp BD — Maternity Care Platform',
+    name: 'Neera — Maternity Care Platform',
     badge: 'AWS Hackathon',
-    date: 'June 2026',
+    date: 'Cloud Camp BD (AWS) · June 2026',
     description:
       'Fully bilingual (Bangla and English) maternity care web app with role-based accounts, so partners and family members get their own logins and scoped access to the mother’s profile — mood tracking, month-by-month nutrition and health guidance, and fetal development stages, alongside a Bangla-capable AI pregnancy assistant.',
     contribution:
-      'Built the AI assistant end to end: scraped guidance from vetted medical sources including WHO and US national health bodies, parsed and normalised it into a clean corpus, embedded it into a vector store, and served grounded answers through a RAG pipeline that responds in Bangla as well as English.',
-    stack: ['RAG', 'Vector Embeddings', 'Web Scraping', 'NLP', 'Bangla NLP', 'Role-Based Access'],
+      'Built the AI assistant end to end: scraped WHO and UNICEF maternal health guidance and OCR’d scanned Bangla PDFs with Tesseract, chunked and embedded the corpus into Pinecone with Mistral, then served grounded answers through a language-aware RAG pipeline that matches queries to the reader’s language with fallback across languages. A FastAPI ingestion service handles URL and PDF sources with background processing and webhook callbacks.',
+    stack: ['RAG', 'Pinecone', 'Mistral', 'FastAPI', 'Tesseract', 'Bangla NLP'],
+    href: 'https://neera-maternal-care-assistant.vercel.app/',
     imagePath: '/project_images/cloud_camp_bd_hackathon.png',
     imageAlt: 'Cloud Camp BD hackathon project',
   },
@@ -84,6 +86,17 @@ export default function Hackathon() {
             <h3 className="max-w-[24ch] text-[1.625rem] font-medium leading-tight tracking-[-0.03em]">
               {feature.name}
             </h3>
+
+            {feature.href ? (
+              <a
+                href={feature.href}
+                target="_blank"
+                rel="noreferrer"
+                className="u-label !text-ink mt-3 inline-flex items-center gap-2 underline decoration-rule-strong underline-offset-4"
+              >
+                View live app &rarr;
+              </a>
+            ) : null}
 
             <p className="u-prose mt-5 max-w-[56ch] text-[1rem]">{feature.description}</p>
 

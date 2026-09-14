@@ -4,6 +4,9 @@
  * Both the home page's Selected Work section and the /projects index read from
  * here — previously the same list was maintained in two files and had already
  * drifted (the Sporteroo entry was named differently in each).
+ *
+ * Content is kept in step with resume/Maisha_Rahman_Resume.tex; every figure
+ * below appears there. When the résumé changes, change this too.
  */
 
 export type Project = {
@@ -30,6 +33,37 @@ export const professionalGroups: ProjectGroup[] = [
     period: 'Jun 2026 – Present',
     projects: [
       {
+        name: 'Natunatta',
+        badge: 'Live Product',
+        href: 'https://natunatta.com',
+        role: 'Sole Fullstack Developer',
+        stack: ['Laravel', 'Angular', 'MySQL', 'bKash', 'WhatsApp API', 'Chatbot'],
+        summary:
+          'Led the full redesign and rebuild end to end — requirement analysis directly with stakeholders, UI/UX, a rebuilt frontend, and a backend written from scratch. The admin side covers bulk CSV product import, gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration and an embedded chatbot, with bKash for mobile payments.',
+        impact:
+          'The group’s first fully functional e-commerce platform, now processing 150+ orders a month across 30+ products.',
+      },
+      {
+        name: 'NAJUS MSME Marketplace',
+        badge: 'Platform Handover',
+        href: '',
+        role: 'Redevelopment Lead',
+        stack: ['Laravel', 'Angular', 'MySQL', 'SSLCommerz'],
+        summary:
+          'Selected to lead the redevelopment of an established multi-vendor marketplace. Found and fixed hundreds of bugs and built the functions still missing to get it launch ready, including SSLCommerz payment integration.',
+        impact: 'A marketplace serving 200+ member enterprises, taken from blocked to launch ready.',
+      },
+      {
+        name: 'Inventory & Manufacturing ERP',
+        badge: 'In Development',
+        href: '',
+        role: 'Sole Fullstack Developer',
+        stack: ['Laravel', 'Angular', 'MySQL'],
+        summary:
+          'Procurement (PR/PO/GRN), bill of materials, multi-warehouse stock, multi-level approvals, VAT-compliant billing and fraud controls.',
+        impact: 'Being designed for commercial release, not just internal use.',
+      },
+      {
         name: 'Guest & Visitor CRM',
         badge: 'Internal Tool',
         // Internal system — described only, no screenshots or public link.
@@ -37,60 +71,18 @@ export const professionalGroups: ProjectGroup[] = [
         role: 'Sole Fullstack Developer',
         stack: ['Laravel', 'Angular', 'MySQL', 'REST APIs'],
         summary:
-          'End-to-end visitor tracking CRM with multi-criteria filtering, blacklist enforcement, interview tracking, guest-category analytics, automated flagging rules, and a stakeholder dashboard for raising and approving meeting requests.',
-        impact:
-          'Owned the full lifecycle solo: requirement analysis, system design, UI/UX, frontend, backend, and unit testing.',
+          'End-to-end visitor tracking with multi-criteria filtering, blacklist enforcement, ID tracking, interview candidate tracking, guest-category analytics and a meeting-approval dashboard.',
+        impact: 'In use at headquarters and at every branch company in the group.',
       },
-      {
-        name: 'E-commerce Platform',
-        badge: 'Live Product',
-        // TODO: add the public storefront URL here to surface a "Visit" link.
-        href: '',
-        role: 'Sole Fullstack Developer',
-        stack: ['Laravel', 'Angular', 'MySQL', 'WhatsApp API', 'Chatbot'],
-        summary:
-          'Full-stack storefront backed by a deep admin panel: bulk product import from CSV, dynamic gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration, and an embedded chatbot.',
-        impact:
-          'Complete commerce stack built and shipped single-handedly, from system design through to production release.',
-      },
-      {
-        name: 'MSME E-Commerce Marketplace',
-        badge: 'Platform Handover',
-        // TODO: add the public URL once it launches.
-        href: '',
-        role: 'Upgrade & Redevelopment',
-        stack: ['Laravel', 'Angular', 'MySQL'],
-        summary:
-          'Multi-vendor MSME marketplace originally built by a senior engineer to a scope comparable to Amazon and Daraz. Handed to me for upgrade and redevelopment, and for preparing the platform for commercial launch.',
-        impact:
-          'Working inside an established production-scale codebase — reading someone else’s architecture, extending it, and taking it to launch.',
-      },
-      // -----------------------------------------------------------------------
-      // Inventory Management System — build starts Sep 2026.
-      // Uncomment this entry once it is actually built and shipped.
-      // {
-      //   name: 'Inventory Management System',
-      //   badge: 'Internal Tool',
-      //   href: '',
-      //   role: 'Sole Fullstack Developer',
-      //   stack: ['Laravel', 'Angular', 'MySQL'],
-      //   summary:
-      //     'Inventory management system for the group brand, covering stock tracking, movement history, and reporting.',
-      //   impact:
-      //     'Built solo from requirement analysis through system design, implementation, and unit testing.',
-      // },
-      // -----------------------------------------------------------------------
       {
         name: 'Resume Builder — NTI Learn',
-        badge: 'EdTech Feature',
-        // TODO: add the NTI Learn URL here to surface a "Visit" link.
-        href: '',
+        badge: 'Live Product',
+        href: 'https://ntilearnbd.com',
         role: 'Fullstack Developer',
-        stack: ['Laravel', 'Angular', 'MySQL'],
+        stack: ['Laravel', 'Angular', 'MySQL', 'SSLCommerz'],
         summary:
-          'Resume-building tool for an educational platform offering online courses, taking the feature from requirement gathering through interface design to production release.',
-        impact:
-          'Shipped a user-facing feature on a live learning platform, coordinating with product, design, and SQA.',
+          'Cleared the major bugs blocking release on the learning platform, then built a resume builder tied to NAJUS.org membership, carrying it from requirements through to production.',
+        impact: 'Onboarded and live on a platform selling online courses.',
       },
     ],
   },
@@ -98,6 +90,31 @@ export const professionalGroups: ProjectGroup[] = [
     employer: 'Inkphase',
     period: 'Nov 2025 – May 2026',
     projects: [
+      {
+        name: 'Sporteroo — Sports Marketplace',
+        badge: 'Client Work',
+        href: 'https://sporteroo.com/',
+        role: 'Fullstack Contributor',
+        stack: ['Laravel', 'Angular', 'MySQL'],
+        summary:
+          'Built frontend and backend for the live sports marketplace, including feature implementation, system integration and chatbot integration.',
+        impact: 'One of six production products delivered across the role.',
+        imagePath: '/project_images/sporteroo_landing.png',
+        imageAlt: 'Sporteroo landing page preview',
+      },
+      {
+        name: 'Multi-tenant AI Chatbot Platform',
+        badge: 'Behind Login',
+        href: '',
+        role: 'Fullstack Contributor',
+        stack: ['Laravel', 'JavaScript', 'MySQL', 'OpenRouter API'],
+        summary:
+          'A multi-tenant chatbot service on a shared database, isolating clients by site key with per-client branding, welcome messages and content policies. OpenRouter sits in front as an LLM gateway with a fallback chain for resilience against model outages and rate limits, plus keyword-based escalation to human support.',
+        impact:
+          'Shipped a framework-agnostic single-script widget running on React, Next.js, Angular, Laravel, Django, Flask, Node.js and Shopify.',
+        imagePath: '/project_images/chatbot_dashboard1.png',
+        imageAlt: 'Multi-tenant chatbot platform preview',
+      },
       {
         name: 'Social Community Platform',
         badge: 'Client Work',
@@ -111,32 +128,6 @@ export const professionalGroups: ProjectGroup[] = [
           'Production website with live chatbot experience and full-stack delivery across application flows.',
         imagePath: '/project_images/cclub_landing.png',
         imageAlt: 'Community platform landing page preview',
-      },
-      {
-        name: 'Sporteroo — Sports Marketplace',
-        badge: 'Client Work',
-        href: 'https://sporteroo.com/',
-        role: 'Fullstack Contributor',
-        stack: ['Laravel', 'Angular', 'MySQL'],
-        summary:
-          'Developed the majority of the frontend and backend application layers for the live product, including feature implementation and system integration.',
-        impact:
-          'Live sports platform shipped with chatbot integration and coordinated full-stack execution.',
-        imagePath: '/project_images/sporteroo_landing.png',
-        imageAlt: 'Sporteroo landing page preview',
-      },
-      {
-        name: 'Multi-tenant Chatbot Platform',
-        badge: 'Behind Login',
-        href: '',
-        role: 'Fullstack Contributor',
-        stack: ['Laravel', 'Angular', 'MySQL', 'LLM APIs'],
-        summary:
-          'Developed a multi-tenant chatbot platform integrating third-party LLM APIs with customer-facing web applications and internal management dashboards.',
-        impact:
-          'Best shown with screenshots because the platform is private and not accessible from the public site.',
-        imagePath: '/project_images/chatbot_dashboard1.png',
-        imageAlt: 'Multi-tenant chatbot platform preview',
       },
     ],
   },
@@ -155,10 +146,11 @@ export const personalProjects: PersonalProject[] = [
   {
     name: 'HealthSync',
     badge: 'Live Build',
-    href: 'https://github.com/RahMaisha/Health-Sync-Capstone.git',
-    desc: 'AI healthcare platform with real-time kidney stone detection. Microservices backend with Explainable AI heatmaps via Grad-CAM++.',
-    impact: '98.6% diagnostic accuracy and 10k+ samples through self-supervised learning.',
-    stack: ['Laravel', 'FastAPI', 'PyTorch', 'Docker', 'Grad-CAM++'],
+    href: 'https://github.com/RahMaisha/Health-Sync-Capstone',
+    desc: 'AI healthcare diagnostic platform for kidney stone detection on ultrasound. Benchmarked five CNN and Transformer backbones, then applied self-supervised (BYOL) and semi-supervised (FlexMatch, FixMatch) learning. Grad-CAM heatmaps provide explainability alongside predictions, and NephroSense adds an AI healthcare chatbot.',
+    impact:
+      '99.89% accuracy on 10,500+ ultrasound images, cutting labeled-data needs by 80%.',
+    stack: ['Laravel', 'FastAPI', 'PyTorch', 'Grad-CAM', 'MySQL'],
   },
   {
     name: 'MAE-ViT',
@@ -168,17 +160,20 @@ export const personalProjects: PersonalProject[] = [
     stack: ['PyTorch', 'ViT', 'MAE', 'SSL', 'Python'],
   },
   {
-    name: 'Career Hive',
-    badge: 'MERN Stack',
-    desc: 'Full-stack job portal with resume builder, JWT auth, and automated CI/CD pipelines.',
-    impact: 'Strong showcase project for product thinking, auth, and developer workflow automation.',
-    stack: ['MongoDB', 'Express', 'React', 'Node.js', 'GitHub Actions'],
+    name: 'Neera',
+    badge: 'AWS Hackathon',
+    href: 'https://neera-maternal-care-assistant.vercel.app/',
+    desc: 'Multilingual maternity care assistant built on a Bangla/English RAG pipeline over WHO and UNICEF guidance — scraped web content and OCR’d Bangla PDFs with Tesseract, embedded into Pinecone, with language-aware retrieval that matches queries to the reader’s language.',
+    impact:
+      'Built at Cloud Camp BD; a FastAPI ingestion service handles URL and PDF sources with background processing and webhooks.',
+    stack: ['RAG', 'Pinecone', 'Mistral', 'FastAPI', 'Tesseract', 'NLP'],
   },
   {
-    name: 'LLM Recommender',
-    badge: 'NLP / AI',
-    desc: 'AI recommendation assistant using NLP parsing, embeddings, and hybrid collaborative filtering.',
-    impact: 'Demonstrates practical LLM integration and recommendation-system thinking.',
-    stack: ['OpenAI API', 'Python', 'HuggingFace', 'Scikit-learn'],
+    name: 'CareerHive',
+    badge: 'Full-Stack',
+    desc: 'Job portal with role-based access for job seekers and recruiters — JWT auth, job search and filtering, postings, company profiles, application tracking and a resume builder.',
+    impact:
+      'REST APIs on Express and MongoDB with Cloudinary-backed uploads; frontend on Redux Toolkit, Tailwind and Radix UI.',
+    stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB'],
   },
 ]

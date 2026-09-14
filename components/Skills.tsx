@@ -20,7 +20,7 @@ const groups: { title: string; smOrder: string; skills: Skill[] }[] = [
       { name: 'Python', startDate: new Date(2020, 4, 1) },
       { name: 'TypeScript', startDate: new Date(2024, 4, 1) },
       { name: 'JavaScript', startDate: new Date(2021, 4, 1) },
-      { name: 'Java', startDate: new Date(2021, 4, 1) },
+      { name: 'PHP', startDate: new Date(2024, 4, 1) },
     ],
   },
   {
@@ -30,7 +30,7 @@ const groups: { title: string; smOrder: string; skills: Skill[] }[] = [
       { name: 'Laravel', startDate: new Date(2024, 4, 1) },
       { name: 'Django', startDate: new Date(2025, 0, 1) },
       { name: 'Node.js', startDate: new Date(2021, 4, 1) },
-      { name: '.NET', startDate: new Date(2023, 4, 1) },
+      { name: 'FastAPI', startDate: new Date(2025, 0, 1) },
     ],
   },
   {
@@ -67,8 +67,10 @@ const groups: { title: string; smOrder: string; skills: Skill[] }[] = [
       { name: 'Git', startDate: new Date(2020, 4, 1) },
       { name: 'Cloudflare', startDate: new Date(2026, 5, 1) },
       { name: 'DigitalOcean', startDate: new Date(2026, 3, 1) },
-      { name: 'Oracle Cloud', startDate: new Date(2024, 4, 1) },
       { name: 'Firebase', startDate: new Date(2024, 10, 1) },
+      { name: 'Vercel', startDate: new Date(2024, 4, 1) },
+      { name: 'cPanel', startDate: new Date(2025, 10, 1) },
+      { name: 'Linux', startDate: new Date(2022, 4, 1) },
     ],
   },
   {
@@ -78,7 +80,6 @@ const groups: { title: string; smOrder: string; skills: Skill[] }[] = [
       { name: 'React', startDate: new Date(2024, 4, 1) },
       { name: 'Next.js', startDate: new Date(2024, 4, 1) },
       { name: 'Angular', startDate: new Date(2024, 10, 1) },
-      { name: 'Flutter', startDate: new Date(2025, 1, 1) },
       { name: 'Tailwind CSS', startDate: new Date(2024, 4, 1) },
     ],
   },
