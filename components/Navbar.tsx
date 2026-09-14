@@ -102,7 +102,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-5">
             <a
-              href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
+              href="/Maisha_Rahman_Software_Developer_Dhaka.pdf"
               target="_blank"
               rel="noreferrer"
               className="u-label !text-ink hidden items-center gap-2 border border-ink px-4 py-2 transition-colors duration-200 hover:bg-ink hover:!text-paper sm:inline-flex"
@@ -152,7 +152,7 @@ export default function Navbar() {
             </button>
           ))}
           <a
-            href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
+            href="/Maisha_Rahman_Software_Developer_Dhaka.pdf"
             target="_blank"
             rel="noreferrer"
             className="u-label !text-paper mt-10 inline-flex justify-center rounded-lg bg-ink px-5 py-4"

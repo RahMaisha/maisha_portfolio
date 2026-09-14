@@ -67,7 +67,7 @@ export default function Hero() {
                 <span aria-hidden>&rarr;</span>
               </a>
               <a
-                href="/Maisha_Rahman_Fullstack_Dev_Resume.pdf"
+                href="/Maisha_Rahman_Software_Developer_Dhaka.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="u-label !text-ink inline-flex items-center gap-3 border border-rule-strong px-6 py-4 transition-colors duration-200 hover:border-ink"
