@@ -30,12 +30,17 @@ const hackathonProjects: HackathonProject[] = [
     imageAlt: 'Cloud Camp BD hackathon project',
   },
   {
-    name: 'CrackerJack 2.0',
-    badge: 'Innovation Hackathon',
+    name: 'Crackerjack 2.0',
+    badge: 'National Case Competition',
+    // A case competition, not a build — this says "proposed", never "built",
+    // because nothing was shipped.
+    date: 'RUET IPE Club × SheSTEM · Apr 2025',
     description:
-      'Built innovative solutions at CrackerJack 2.0 hackathon, showcasing rapid prototyping and creative problem-solving skills.',
+      'Competed among 277+ teams on ShareTrip’s live business case — automating ticket refund, reissue and void with AI. Our proposal combined a chatbot taking first-line requests and running eligibility checks, airline and bank API integration for real-time policy checks, and a customer portal for tracking the status of each request.',
+    contribution:
+      'Contributed to the technical solution design, and supported research and presentation, as part of Team Almost Brilliant.',
     imagePath: '/project_images/crackerjack2.0_hackathon.png',
-    imageAlt: 'CrackerJack 2.0 hackathon project',
+    imageAlt: 'Crackerjack 2.0 business case competition',
   },
   {
     name: 'Robofest',
@@ -139,9 +144,18 @@ export default function Hackathon() {
               <h3 className="mt-3 text-[1.1875rem] font-medium leading-tight tracking-[-0.025em]">
                 {project.name}
               </h3>
+              {project.date ? <p className="u-label mt-2">{project.date}</p> : null}
               <p className="mt-3 max-w-[48ch] text-[0.9375rem] leading-relaxed text-ink-2">
                 {project.description}
               </p>
+              {project.contribution ? (
+                <div className="mt-4 border-t border-rule pt-4">
+                  <p className="u-label mb-1.5">My contribution</p>
+                  <p className="max-w-[48ch] text-[0.875rem] leading-relaxed text-ink">
+                    {project.contribution}
+                  </p>
+                </div>
+              ) : null}
             </Card3D>
           </Reveal>
         ))}
