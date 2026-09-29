@@ -60,7 +60,7 @@ export default function About() {
                     East West University · 2022&ndash;2025
                   </span>
                   <span className="block text-ink-2">
-                    Intelligent Systems &amp; Data Science · CGPA 3.32 / 4.00
+                    Intelligent Systems &amp; Data Science
                   </span>
                 </dd>
               </div>
