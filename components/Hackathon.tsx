@@ -17,11 +17,11 @@ type HackathonProject = {
 
 const hackathonProjects: HackathonProject[] = [
   {
-    name: 'Neera — Maternity Care Platform',
+    name: 'Neera: Maternity Care Platform',
     badge: 'AWS Hackathon',
     date: 'Cloud Camp BD (AWS) · June 2026',
     description:
-      'Fully bilingual (Bangla and English) maternity care web app with role-based accounts, so partners and family members get their own logins and scoped access to the mother’s profile — mood tracking, month-by-month nutrition and health guidance, and fetal development stages, alongside a Bangla-capable AI pregnancy assistant.',
+      'Fully bilingual (Bangla and English) maternity care web app with role-based accounts, so partners and family members get their own logins and scoped access to the mother’s profile: mood tracking, month-by-month nutrition and health guidance, and fetal development stages, alongside a Bangla-capable AI pregnancy assistant.',
     contribution:
       'Built the AI assistant end to end: scraped WHO and UNICEF maternal health guidance and OCR’d scanned Bangla PDFs with Tesseract, chunked and embedded the corpus into Pinecone with Mistral, then served grounded answers through a language-aware RAG pipeline that matches queries to the reader’s language with fallback across languages. A FastAPI ingestion service handles URL and PDF sources with background processing and webhook callbacks.',
     stack: ['RAG', 'Pinecone', 'Mistral', 'FastAPI', 'Tesseract', 'Bangla NLP'],
@@ -32,11 +32,11 @@ const hackathonProjects: HackathonProject[] = [
   {
     name: 'Crackerjack 2.0',
     badge: 'National Case Competition',
-    // A case competition, not a build — this says "proposed", never "built",
+    // A case competition, not a build, so this says "proposed", never "built",
     // because nothing was shipped.
     date: 'RUET IPE Club × SheSTEM · Apr 2025',
     description:
-      'Competed among 277+ teams on ShareTrip’s live business case — automating ticket refund, reissue and void with AI. Our proposal combined a chatbot taking first-line requests and running eligibility checks, airline and bank API integration for real-time policy checks, and a customer portal for tracking the status of each request.',
+      'Competed among 277+ teams on ShareTrip’s live business case: automating ticket refund, reissue and void with AI. Our proposal combined a chatbot taking first-line requests and running eligibility checks, airline and bank API integration for real-time policy checks, and a customer portal for tracking the status of each request.',
     contribution:
       'Contributed to the technical solution design, and supported research and presentation, as part of Team Almost Brilliant.',
     imagePath: '/project_images/crackerjack2.0_hackathon.png',

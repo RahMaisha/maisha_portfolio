@@ -18,10 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 })
 
-// Update this if you move to a custom domain — every OG/canonical URL derives from it.
+// Update this if you move to a custom domain. Every OG/canonical URL derives from it.
 const SITE_URL = 'https://maisha-portfolio-nine.vercel.app'
 
-const title = 'Maisha Rahman — Software Engineer'
+const title = 'Maisha Rahman · Software Engineer'
 const description =
   'Fullstack and AI engineer in Dhaka, Bangladesh. In-house developer for Armani Group, IEEE ICCIT 2025 published researcher, building production CRM, e-commerce, and LLM systems.'
 

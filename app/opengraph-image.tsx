@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'nodejs'
-export const alt = 'Maisha Rahman — Software Engineer'
+export const alt = 'Maisha Rahman · Software Engineer'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -75,7 +75,7 @@ export default function OpengraphImage() {
           }}
         >
           <span>IEEE ICCIT 2025</span>
-          <span>In-house developer — Armani Group</span>
+          <span>In-house developer, Armani Group</span>
         </div>
       </div>
     ),

@@ -5,7 +5,7 @@ import Section from './Section'
 const FOCUS = [
   {
     title: 'Production web, SaaS & mobile',
-    body: 'End-to-end delivery on live products — architecture, APIs, interface, deployment, and security across the full stack.',
+    body: 'End-to-end delivery on live products: architecture, APIs, interface, deployment, and security across the full stack.',
   },
   {
     title: 'Medical AI & computer vision',
@@ -13,7 +13,7 @@ const FOCUS = [
   },
   {
     title: 'AI systems & CRM',
-    body: 'LLM-powered systems in commercial production — chatbots, embeddable widgets, and NLP pipelines behind real interfaces.',
+    body: 'LLM-powered systems in commercial production: chatbots, embeddable widgets, and NLP pipelines behind real interfaces.',
   },
   {
     title: 'Backend & infrastructure',
@@ -87,17 +87,17 @@ export default function About() {
             <div className="max-w-[64ch] space-y-6">
               <p className="u-prose text-[1.1875rem] !text-ink">
                 I&rsquo;m a software engineer focused on backend systems, full-stack development, and
-                applied AI — working across production web applications, APIs, databases, and
+                applied AI, working across production web applications, APIs, databases, and
                 deployment workflows, alongside computer vision research.
               </p>
               <p className="u-prose">
                 I&rsquo;m currently the <strong>in-house software developer for Armani Group</strong>{' '}
                 through its tech arm <strong>CellsTech</strong>, based at group headquarters as the
                 sole engineer on the group&rsquo;s software. I&rsquo;ve delivered{' '}
-                <strong>multiple systems and web applications</strong> there — a guest and visitor
-                management CRM, a full-featured e-commerce platform, and an MSME marketplace —
-                typically running several in parallel and carrying each end to end through
-                requirement analysis, system design, UI/UX, frontend, backend, and unit testing.
+                <strong>multiple systems and web applications</strong> there: a guest and visitor
+                management CRM, a full-featured e-commerce platform, and an MSME marketplace. I
+                typically run several in parallel, carrying each end to end through requirement
+                analysis, system design, UI/UX, frontend, backend, and unit testing.
                 Alongside the build work I&rsquo;m the engineering point of contact for product,
                 business analysis, SQA, design, and PR.
               </p>

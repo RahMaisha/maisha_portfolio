@@ -10,7 +10,7 @@ type Skill = { name: string; startDate: Date }
  * Order is chosen for the layout, not alphabetically: the three four-item
  * groups fill the first row exactly, and the second row steps down 9 → 7 → 5.
  * Both rows resolve to a clean edge, so nothing is left orphaned. Reordering
- * here is the whole alignment fix — see the grid below.
+ * here is the whole alignment fix. See the grid below.
  */
 const groups: { title: string; smOrder: string; skills: Skill[] }[] = [
   {

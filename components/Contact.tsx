@@ -95,7 +95,7 @@ export default function Contact() {
           {/* Form */}
           <Reveal delay={80}>
             <form onSubmit={handleSubmit} className="border-t border-ink pt-8">
-              {/* Web3Forms honeypot — real people never fill this in. */}
+              {/* Web3Forms honeypot. Real people never fill this in. */}
               <input
                 type="checkbox"
                 name="botcheck"

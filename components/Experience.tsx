@@ -45,7 +45,7 @@ const roles: Role[] = [
     bullets: [
       {
         bold: 'Led the full redesign and rebuild of Natunatta',
-        rest: ' end to end — running requirement analysis directly with stakeholders, doing the UI/UX, rebuilding the frontend and writing the backend from scratch. It is the group’s first fully functional e-commerce platform, now processing 150+ orders a month across 30+ products.',
+        rest: ' end to end, running requirement analysis directly with stakeholders, doing the UI/UX, rebuilding the frontend and writing the backend from scratch. It is the group’s first fully functional e-commerce platform, now processing 150+ orders a month across 30+ products.',
       },
       {
         bold: 'Built the admin side of that platform',
@@ -53,7 +53,7 @@ const roles: Role[] = [
       },
       {
         bold: 'Designing an inventory and manufacturing ERP for commercial release',
-        rest: ' — procurement (PR/PO/GRN), bill of materials, multi-warehouse stock, multi-level approvals, VAT-compliant billing and fraud controls.',
+        rest: ': procurement (PR/PO/GRN), bill of materials, multi-warehouse stock, multi-level approvals, VAT-compliant billing and fraud controls.',
       },
       {
         bold: 'Selected to lead the redevelopment of NAJUS MSME',
@@ -123,7 +123,7 @@ const roles: Role[] = [
     bullets: [
       {
         bold: 'Worked across six production products',
-        rest: ', including two SaaS platforms — a contact management CRM and a multi-tenant AI chatbot service.',
+        rest: ', including two SaaS platforms: a contact management CRM and a multi-tenant AI chatbot service.',
       },
       {
         bold: 'Built frontend and backend for Sporteroo',
@@ -202,7 +202,7 @@ export default function Experience() {
                     {isCurrent ? (
                       <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink" />
                     ) : null}
-                    {formatMonth(role.start)} — {role.end ? formatMonth(role.end) : 'Present'}
+                    {formatMonth(role.start)} – {role.end ? formatMonth(role.end) : 'Present'}
                     <span aria-hidden className="text-ink-4">/</span>
                     {getDuration(role.start, role.end)}
                   </div>

@@ -28,7 +28,7 @@ function Badge({ label }: { label: string }) {
  * Shared between the home page's Selected Work section and the /projects index
  * so both stay visually identical as the design evolves.
  *
- * Screenshots render in full colour — they are the one place on the page where
+ * Screenshots render in full colour. They are the one place on the page where
  * colour carries real information about the work.
  */
 export function ProfessionalCard({ project, sizes }: { project: Project; sizes: string }) {

@@ -8,13 +8,13 @@ const TILES = Array.from({ length: 9 })
 /**
  * The hero's focal object: a 3x3 cube built from CSS 3D transforms.
  *
- * Replaces an embedded WebGL scene — no third-party runtime, no vendor
+ * Replaces an embedded WebGL scene: no third-party runtime, no vendor
  * watermark, a few kilobytes instead of ~1MB, and the greys are tuned in the
  * stylesheet so the solid always reads against white paper.
  *
  * It tilts toward the pointer. Pointer tracking is skipped entirely under
  * prefers-reduced-motion, and on coarse-pointer devices where there is nothing
- * to track — in both cases the cube simply rests at its base orientation.
+ * to track. In both cases the cube simply rests at its base orientation.
  */
 export default function CubeScene() {
   const tilt = useRef<HTMLDivElement>(null)

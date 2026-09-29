@@ -2,14 +2,14 @@
 
 import { useEffect, useRef } from 'react'
 
-const MAX_TILT = 5 // degrees — small on purpose; see globals.css .card3d-inner
+const MAX_TILT = 5 // degrees, small on purpose; see globals.css .card3d-inner
 
 /**
  * Wraps a card in pointer-driven 3D.
  *
  * The tilt, the sheen position, and the shadow offset all derive from one
  * pointer reading per animation frame, so the light and the shadow agree with
- * the rotation — that coherence is what makes it read as a solid object.
+ * the rotation. That coherence is what makes it read as a solid object.
  *
  * Skipped entirely under prefers-reduced-motion and on coarse-pointer devices,
  * where the card renders as a plain flat surface.

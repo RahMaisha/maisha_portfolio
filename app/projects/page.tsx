@@ -6,7 +6,7 @@ import { PersonalCard, ProfessionalCard } from '@/components/ProjectCard'
 import { personalProjects, professionalGroups } from '@/data/projects'
 
 export const metadata: Metadata = {
-  title: 'All Projects — Maisha Rahman',
+  title: 'All Projects · Maisha Rahman',
   description:
     'Complete index of professional client work and personal projects across full-stack development, AI/ML, and platform engineering.',
   alternates: { canonical: '/projects' },

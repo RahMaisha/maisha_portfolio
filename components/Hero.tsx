@@ -7,17 +7,17 @@ const DISCIPLINES = [
 ]
 
 /* Every figure here is traceable to resume/Maisha_Rahman_Resume.tex. Keep them
-   in step — a portfolio that contradicts its own résumé is worse than a vague
+   in step. A portfolio that contradicts its own résumé is worse than a vague
    one. */
 const FACTS = [
-  { value: 'IEEE ICCIT 2025', label: 'Published — hybrid ViT' },
+  { value: 'IEEE ICCIT 2025', label: 'Hybrid ViT paper' },
   { value: '150+ orders / mo', label: 'Natunatta, built end to end' },
   { value: '200+ enterprises', label: 'NAJUS MSME, redevelopment lead' },
 ]
 
 /**
  * Above the fold, so the entrance is a CSS animation rather than an
- * IntersectionObserver — the hero paints on first frame with no JS round-trip.
+ * IntersectionObserver. The hero paints on first frame with no JS round-trip.
  */
 export default function Hero() {
   return (
@@ -53,7 +53,7 @@ export default function Hero() {
             </ul>
 
             <p className="u-rise u-prose mt-8 max-w-[52ch]" style={{ animationDelay: '180ms' }}>
-              I build <strong>systems that reach production</strong> — from published Vision
+              I build <strong>systems that reach production</strong>, from published Vision
               Transformer research to the CRM, commerce, and LLM platforms running inside a
               Bangladeshi business group. Computer Science graduate of East West University.
             </p>
@@ -70,7 +70,7 @@ export default function Hero() {
                 <span aria-hidden>&rarr;</span>
               </a>
               <a
-                href="/Maisha_Rahman_Software_Developer_Dhaka.pdf"
+                href="/maisharahman-software-engineer.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="u-label !text-ink inline-flex items-center gap-3 border border-rule-strong px-6 py-4 transition-colors duration-200 hover:border-ink"

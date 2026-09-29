@@ -2,7 +2,7 @@
  * Single source of truth for project data.
  *
  * Both the home page's Selected Work section and the /projects index read from
- * here — previously the same list was maintained in two files and had already
+ * here. Previously the same list was maintained in two files and had already
  * drifted (the Sporteroo entry was named differently in each).
  *
  * Content is kept in step with resume/Maisha_Rahman_Resume.tex; every figure
@@ -39,7 +39,7 @@ export const professionalGroups: ProjectGroup[] = [
         role: 'Sole Fullstack Developer',
         stack: ['Laravel', 'Angular', 'MySQL', 'bKash', 'WhatsApp API', 'Chatbot'],
         summary:
-          'Led the full redesign and rebuild end to end — requirement analysis directly with stakeholders, UI/UX, a rebuilt frontend, and a backend written from scratch. The admin side covers bulk CSV product import, gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration and an embedded chatbot, with bKash for mobile payments.',
+          'Led the full redesign and rebuild end to end: requirement analysis directly with stakeholders, UI/UX, a rebuilt frontend, and a backend written from scratch. The admin side covers bulk CSV product import, gift vouchers, order tracking, inventory management, sales analytics, WhatsApp integration and an embedded chatbot, with bKash for mobile payments.',
         impact:
           'The group’s first fully functional e-commerce platform, now processing 150+ orders a month across 30+ products.',
       },
@@ -66,7 +66,7 @@ export const professionalGroups: ProjectGroup[] = [
       {
         name: 'Guest & Visitor CRM',
         badge: 'Internal Tool',
-        // Internal system — described only, no screenshots or public link.
+        // Internal system, described only. No screenshots or public link.
         href: '',
         role: 'Sole Fullstack Developer',
         stack: ['Laravel', 'Angular', 'MySQL', 'REST APIs'],
@@ -75,7 +75,7 @@ export const professionalGroups: ProjectGroup[] = [
         impact: 'In use at headquarters and at every branch company in the group.',
       },
       {
-        name: 'Resume Builder — NTI Learn',
+        name: 'NTI Learn Resume Builder',
         badge: 'Live Product',
         href: 'https://ntilearnbd.com',
         role: 'Fullstack Developer',
@@ -91,7 +91,7 @@ export const professionalGroups: ProjectGroup[] = [
     period: 'Nov 2025 – May 2026',
     projects: [
       {
-        name: 'Sporteroo — Sports Marketplace',
+        name: 'Sporteroo',
         badge: 'Client Work',
         href: 'https://sporteroo.com/',
         role: 'Fullstack Contributor',
@@ -118,7 +118,7 @@ export const professionalGroups: ProjectGroup[] = [
       {
         name: 'Social Community Platform',
         badge: 'Client Work',
-        // Client asked not to be named or linked — anonymised on purpose. Do not add a URL here.
+        // Client asked not to be named or linked. Anonymised on purpose, so do not add a URL here.
         href: '',
         role: 'Fullstack Contributor',
         stack: ['Laravel', 'Angular', 'MySQL'],
@@ -163,7 +163,7 @@ export const personalProjects: PersonalProject[] = [
     name: 'Neera',
     badge: 'AWS Hackathon',
     href: 'https://neera-maternal-care-assistant.vercel.app/',
-    desc: 'Multilingual maternity care assistant built on a Bangla/English RAG pipeline over WHO and UNICEF guidance — scraped web content and OCR’d Bangla PDFs with Tesseract, embedded into Pinecone, with language-aware retrieval that matches queries to the reader’s language.',
+    desc: 'Multilingual maternity care assistant built on a Bangla/English RAG pipeline over WHO and UNICEF guidance. Scraped web content and OCR’d Bangla PDFs with Tesseract, embedded them into Pinecone, and added language-aware retrieval that matches queries to the reader’s language.',
     impact:
       'Built at Cloud Camp BD; a FastAPI ingestion service handles URL and PDF sources with background processing and webhooks.',
     stack: ['RAG', 'Pinecone', 'Mistral', 'FastAPI', 'Tesseract', 'NLP'],
@@ -171,7 +171,7 @@ export const personalProjects: PersonalProject[] = [
   {
     name: 'CareerHive',
     badge: 'Full-Stack',
-    desc: 'Job portal with role-based access for job seekers and recruiters — JWT auth, job search and filtering, postings, company profiles, application tracking and a resume builder.',
+    desc: 'Job portal with role-based access for job seekers and recruiters, covering JWT auth, job search and filtering, postings, company profiles, application tracking and a resume builder.',
     impact:
       'REST APIs on Express and MongoDB with Cloudinary-backed uploads; frontend on Redux Toolkit, Tailwind and Radix UI.',
     stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB'],
