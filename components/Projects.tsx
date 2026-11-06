@@ -12,8 +12,8 @@ export default function Projects() {
       id="work"
       index="03"
       label="Selected work"
-      title="What I've built, and what I owned in it."
-      intro="Professional work is listed separately from personal and research projects, so it stays clear what was delivered inside a team and what I own independently."
+      title="Projects I&rsquo;ve shipped."
+      intro="Work done for an employer or client is listed first, then personal and research projects, so it is clear what I built with a team and what I built alone."
     >
       {/* Professional */}
       <div className="mb-[clamp(56px,7vw,88px)]">

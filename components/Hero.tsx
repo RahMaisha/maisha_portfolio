@@ -53,9 +53,9 @@ export default function Hero() {
             </ul>
 
             <p className="u-rise u-prose mt-8 max-w-[52ch]" style={{ animationDelay: '180ms' }}>
-              I build <strong>systems that reach production</strong>, from published Vision
-              Transformer research to the CRM, commerce, and LLM platforms running inside a
-              Bangladeshi business group. Computer Science graduate of East West University.
+              I build the <strong>CRM, commerce and LLM platforms</strong> running inside Armani
+              Group, and publish computer vision research alongside the job. Computer Science
+              graduate of East West University.
             </p>
 
             <div
@@ -90,7 +90,7 @@ export default function Hero() {
           {FACTS.map((fact) => (
             <div
               key={fact.value}
-              className="border-b border-rule py-6 sm:border-b-0 sm:border-r sm:border-rule sm:pr-8 sm:last:border-r-0 sm:[&:not(:first-child)]:pl-8"
+              className="border-b border-rule py-5 sm:border-b-0 sm:py-6 sm:border-r sm:border-rule sm:pr-8 sm:last:border-r-0 sm:[&:not(:first-child)]:pl-8"
             >
               <dt className="u-h3">{fact.value}</dt>
               <dd className="u-label mt-2">{fact.label}</dd>

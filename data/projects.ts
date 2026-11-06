@@ -51,7 +51,7 @@ export const professionalGroups: ProjectGroup[] = [
         stack: ['Laravel', 'Angular', 'MySQL', 'SSLCommerz'],
         summary:
           'Selected to lead the redevelopment of an established multi-vendor marketplace. Found and fixed hundreds of bugs and built the functions still missing to get it launch ready, including SSLCommerz payment integration.',
-        impact: 'A marketplace serving 200+ member enterprises, taken from blocked to launch ready.',
+        impact: 'A marketplace serving 200+ member enterprises, blocked before and launch ready after.',
       },
       {
         name: 'Inventory & Manufacturing ERP',
@@ -61,7 +61,7 @@ export const professionalGroups: ProjectGroup[] = [
         stack: ['Laravel', 'Angular', 'MySQL'],
         summary:
           'Procurement (PR/PO/GRN), bill of materials, multi-warehouse stock, multi-level approvals, VAT-compliant billing and fraud controls.',
-        impact: 'Being designed for commercial release, not just internal use.',
+        impact: 'Designed for commercial release rather than internal use.',
       },
       {
         name: 'Guest & Visitor CRM',

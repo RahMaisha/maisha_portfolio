@@ -60,7 +60,7 @@ export default function Hackathon() {
       id="hackathon"
       index="06"
       label="Competitions"
-      title="Built under a clock, with strangers."
+      title="Hackathons and case competitions."
     >
       {/* Feature */}
       <Reveal as="article">

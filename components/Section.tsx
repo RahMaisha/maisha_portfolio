@@ -25,13 +25,13 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`border-t border-rule py-[clamp(72px,10vw,132px)] ${
+      className={`border-t border-rule py-[clamp(56px,9vw,132px)] ${
         tone === 'paper-2' ? 'bg-paper-2' : 'bg-paper'
       }`}
     >
       <div className="u-shell">
         <Reveal>
-          <div className="mb-[clamp(40px,5vw,64px)]">
+          <div className="mb-[clamp(32px,5vw,64px)]">
             <div className="mb-6 flex items-baseline gap-4">
               <span className="u-label u-mono !text-ink">{index}</span>
               <span className="u-label">{label}</span>

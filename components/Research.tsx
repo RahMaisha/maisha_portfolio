@@ -34,7 +34,7 @@ export default function Research() {
       id="research"
       index="04"
       label="Research"
-      title="Published work in computer vision and self-supervised learning."
+      title="A paper and a public dataset."
       tone="paper-2"
     >
       <div className="grid gap-6 md:grid-cols-2">

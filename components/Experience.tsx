@@ -16,7 +16,6 @@ type Role = {
   end?: MonthPoint
   tags: string[]
   bullets: { bold: string; rest: string }[]
-  projects: { name: string; summary: string }[]
 }
 
 const roles: Role[] = [
@@ -72,33 +71,6 @@ const roles: Role[] = [
         rest: ', acting as the main point of contact for product managers, business analysts, SQA, design and PR, and handling deployment on Cloudflare and Firebase.',
       },
     ],
-    projects: [
-      {
-        name: 'Natunatta',
-        summary:
-          'The group’s first fully functional e-commerce platform, rebuilt end to end and now running 150+ orders a month across 30+ products.',
-      },
-      {
-        name: 'NAJUS MSME Marketplace',
-        summary:
-          'Multi-vendor marketplace serving 200+ member enterprises; led its redevelopment and took it from blocked to launch ready.',
-      },
-      {
-        name: 'Inventory & Manufacturing ERP',
-        summary:
-          'Procurement, bill of materials, multi-warehouse stock, multi-level approvals and VAT-compliant billing, built for commercial release.',
-      },
-      {
-        name: 'Guest & Visitor CRM',
-        summary:
-          'Visitor tracking in use at headquarters and every branch company, with blacklisting, ID and interview tracking, and a meeting-approval dashboard.',
-      },
-      {
-        name: 'Resume Builder (NTI Learn)',
-        summary:
-          'Resume-building tool tied to NAJUS.org membership, delivered from requirements through UI design to production.',
-      },
-    ],
   },
   {
     company: 'Inkphase',
@@ -142,28 +114,6 @@ const roles: Role[] = [
         rest: ', and on CSRF protection, JWT authentication and rate limiting.',
       },
     ],
-    projects: [
-      {
-        name: 'Sporteroo',
-        summary:
-          'Live sports marketplace; built frontend and backend alongside design, QA and product direction.',
-      },
-      {
-        name: 'Multi-tenant Chatbot SaaS',
-        summary:
-          'Chatbot platform isolating clients by site key, with an OpenRouter LLM gateway and an embeddable framework-agnostic widget.',
-      },
-      {
-        name: 'Contact Management CRM',
-        summary:
-          'One of the two SaaS platforms delivered in the role, built on the shared Laravel and Angular stack.',
-      },
-      {
-        name: 'JSON-to-XML Service',
-        summary:
-          'Schema-driven transformation service for a healthcare data client, with nested mapping and validation pipelines in Django and PostgreSQL.',
-      },
-    ],
   },
 ]
 
@@ -186,7 +136,7 @@ export default function Experience() {
       id="experience"
       index="02"
       label="Experience"
-      title="Two roles, both shipping to production."
+      title="Where I&rsquo;ve worked so far."
       tone="paper-2"
     >
       <div className="space-y-[clamp(56px,7vw,88px)]">
@@ -228,7 +178,7 @@ export default function Experience() {
                   ) : null}
 
                   <p className="u-label mt-5">
-                    {role.location} <span className="text-ink-4">/</span> {role.mode}
+                    {role.location} <span aria-hidden className="text-ink-4">/</span> {role.mode}
                   </p>
 
                   <p className="u-mono mt-5 max-w-[34ch] text-[0.75rem] leading-relaxed text-ink-3">
@@ -252,25 +202,6 @@ export default function Experience() {
                     ))}
                   </ul>
 
-                  <div className="mt-12">
-                    <h5 className="u-label mb-1">Selected work</h5>
-                    <dl className="border-t border-rule">
-                      {role.projects.map((project, i) => (
-                        <div
-                          key={project.name}
-                          className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-x-4 gap-y-1 border-b border-rule py-5 sm:grid-cols-[2rem_15rem_minmax(0,1fr)]"
-                        >
-                          <dt className="u-label u-mono">{String(i + 1).padStart(2, '0')}</dt>
-                          <dd className="text-[1rem] font-medium tracking-[-0.015em]">
-                            {project.name}
-                          </dd>
-                          <dd className="col-start-2 max-w-[52ch] text-[0.875rem] leading-relaxed text-ink-2 sm:col-start-3">
-                            {project.summary}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
                 </div>
               </div>
             </Reveal>

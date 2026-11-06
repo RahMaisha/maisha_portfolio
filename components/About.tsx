@@ -13,11 +13,11 @@ const FOCUS = [
   },
   {
     title: 'AI systems & CRM',
-    body: 'LLM-powered systems in commercial production: chatbots, embeddable widgets, and NLP pipelines behind real interfaces.',
+    body: 'LLM-powered systems in commercial production: chatbots, embeddable widgets and NLP pipelines.',
   },
   {
     title: 'Backend & infrastructure',
-    body: 'Platforms built for concurrent load, with horizontal scaling, caching layers, and considered database architecture.',
+    body: 'Platforms built for concurrent load, with horizontal scaling, caching layers and database design that holds up under it.',
   },
 ]
 
@@ -27,7 +27,7 @@ export default function About() {
       id="about"
       index="01"
       label="About"
-      title="Engineer across production systems and applied research."
+      title="Sole engineer on a business group&rsquo;s software."
     >
       <div className="grid gap-x-16 gap-y-14 lg:grid-cols-[300px_minmax(0,1fr)]">
         {/* Portrait + credentials */}

@@ -98,7 +98,7 @@ export default function Skills() {
       id="skills"
       index="05"
       label="Capabilities"
-      title="The stack, and how long I've been in it."
+      title="What I work with."
     >
       {/* A grid, not column flow. Column flow packs without gaps but lets each
           column run to its own length, so the group headings land at unrelated

@@ -23,7 +23,7 @@ const SITE_URL = 'https://maisha-portfolio-nine.vercel.app'
 
 const title = 'Maisha Rahman · Software Engineer'
 const description =
-  'Fullstack and AI engineer in Dhaka, Bangladesh. In-house developer for Armani Group, IEEE ICCIT 2025 published researcher, building production CRM, e-commerce, and LLM systems.'
+  'Software developer in Dhaka. Sole in-house engineer for Armani Group, building commerce, CRM and ERP platforms. IEEE ICCIT 2025 published in computer vision.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'Maisha Rahman',
-    'Fullstack Developer',
+    'Software Developer',
+    'Full-Stack Developer',
     'AI Engineer',
-    'Software Engineer',
     'Dhaka',
     'Bangladesh',
     'Laravel',

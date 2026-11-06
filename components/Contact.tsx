@@ -49,10 +49,10 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-rule bg-paper pt-[clamp(72px,10vw,132px)]">
+    <section id="contact" className="border-t border-rule bg-paper pt-[clamp(56px,9vw,132px)]">
       <div className="u-shell">
         <Reveal>
-          <div className="mb-[clamp(40px,5vw,64px)]">
+          <div className="mb-[clamp(32px,5vw,64px)]">
             <div className="mb-6 flex items-baseline gap-4">
               <span className="u-label u-mono">08</span>
               <span className="u-label">Contact</span>
