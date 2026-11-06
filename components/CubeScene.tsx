@@ -51,10 +51,12 @@ export default function CubeScene() {
   return (
     <div
       aria-hidden
-      /* Shown at every size now that it costs a few kilobytes rather than a
-         WebGL runtime. On phones it sits below the copy at a reduced size. */
-      className="cube-scene aspect-[3/2] w-full select-none sm:aspect-square"
-      style={{ '--cube-size': 'clamp(132px, 30vw, 248px)' } as React.CSSProperties}
+      /* Only from `lg`, where the hero is a two-column grid and the cube has a
+         column of its own. Below that the hero is a single stack, and a cube
+         dropped under the copy reads as a loose ornament rather than part of
+         the composition. */
+      className="cube-scene hidden aspect-square w-full select-none lg:block"
+      style={{ '--cube-size': 'clamp(176px, 19vw, 248px)' } as React.CSSProperties}
     >
       <div ref={tilt} className="cube-tilt">
         <div className="cube-spin">

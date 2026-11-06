@@ -97,7 +97,7 @@ export default function Hackathon() {
                 href={feature.href}
                 target="_blank"
                 rel="noreferrer"
-                className="u-label !text-ink mt-3 inline-flex items-center gap-2 underline decoration-rule-strong underline-offset-4"
+                className="u-label u-tap !text-ink mt-3 inline-flex items-center gap-2 underline decoration-rule-strong underline-offset-4"
               >
                 View live app &rarr;
               </a>

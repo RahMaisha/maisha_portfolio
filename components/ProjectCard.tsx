@@ -53,7 +53,7 @@ export function ProfessionalCard({ project, sizes }: { project: Project; sizes: 
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="u-label !text-ink shrink-0 underline decoration-rule-strong underline-offset-4"
+            className="u-label u-tap !text-ink shrink-0 underline decoration-rule-strong underline-offset-4"
           >
             Visit &rarr;
           </a>
@@ -88,7 +88,7 @@ export function PersonalCard({ project }: { project: PersonalProject }) {
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="u-label !text-ink shrink-0 underline decoration-rule-strong underline-offset-4"
+            className="u-label u-tap !text-ink shrink-0 underline decoration-rule-strong underline-offset-4"
           >
             Repository &rarr;
           </a>

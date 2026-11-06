@@ -26,7 +26,7 @@ export default function Hero() {
       className="relative pt-[104px] pb-[clamp(56px,8vw,104px)] sm:pt-[136px]"
     >
       <div className="u-shell">
-        <div className="grid items-center gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)]">
+        <div className="grid items-center gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-x-16 xl:grid-cols-[minmax(0,1fr)_420px]">
           <div>
             <div className="u-rise u-label mb-9 flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink" />

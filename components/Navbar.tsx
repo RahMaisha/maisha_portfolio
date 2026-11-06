@@ -81,7 +81,7 @@ export default function Navbar() {
         <div className="u-shell flex h-[60px] items-center justify-between gap-8">
           <button
             onClick={() => go('top')}
-            className="u-label !text-ink whitespace-nowrap !tracking-[0.14em] cursor-pointer"
+            className="u-label !text-ink -my-3 cursor-pointer whitespace-nowrap py-3 !tracking-[0.14em]"
           >
             Maisha Rahman
           </button>
@@ -114,7 +114,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen((open) => !open)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
-              className="flex h-6 w-6 cursor-pointer flex-col items-end justify-center gap-[5px] md:hidden"
+              className="-mr-2.5 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] md:hidden"
             >
               <span
                 className={`block h-px bg-ink transition-all duration-300 ${

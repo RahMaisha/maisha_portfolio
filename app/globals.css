@@ -150,7 +150,7 @@
     font-weight: 500;
   }
 
-  /* Underline that retracts from the left on hover — the only decorative motion
+  /* Underline that retracts from the left on hover, the only decorative motion
      in the system, and it only ever signals "this is a link". */
   .u-link {
     color: var(--color-ink);
@@ -361,6 +361,28 @@
   }
   50% {
     transform: rotateY(16deg);
+  }
+}
+
+/* Grows a small link's hit area to 44px on touch devices without moving
+   anything: the box stays the size the layout wants, and an invisible
+   pseudo-element takes the taps. Scoped to coarse pointers, since a mouse does
+   not need the help and the overlap could swallow hovers beside it.
+
+   Must stay at the top level. Nested inside `@layer components`, Tailwind
+   drops the whole media block and the rule never reaches the stylesheet. */
+@media (pointer: coarse) {
+  .u-tap {
+    position: relative;
+  }
+
+  .u-tap::after {
+    content: '';
+    position: absolute;
+    inset-inline: -6px;
+    top: 50%;
+    translate: 0 -50%;
+    height: max(100%, 44px);
   }
 }
 

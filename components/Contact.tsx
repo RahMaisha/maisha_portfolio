@@ -76,7 +76,7 @@ export default function Contact() {
                   <dd className="text-[1rem]">
                     {item.href ? (
                       <a
-                        className="u-link"
+                        className="u-link u-tap"
                         href={item.href}
                         target={item.href.startsWith('mailto') ? undefined : '_blank'}
                         rel="noreferrer"
